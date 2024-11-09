@@ -2,7 +2,7 @@
     <style name="Base.Theme.Capstone" parent="Theme.Material3.DayNight">
 
         <item name="colorPrimary">@color/dark_blue_500</item>
-        <item name="colorPrimaryVariant">@color/dark_blue_700</item>
+        <item name="colorPrimaryVariant">#244464</item>
         <item name="colorOnPrimary">@color/white</item>
 
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>

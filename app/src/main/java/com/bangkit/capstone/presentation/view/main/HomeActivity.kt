@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -24,10 +25,10 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        updateBackgroundBasedOnTheme()
 
         binding.btnLihatTitikLokasi.setOnClickListener {
             val intent = Intent(this, MapsActivity::class.java)
@@ -39,6 +40,22 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    private fun updateBackgroundBasedOnTheme() {
+        val currentNightMode = resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
+        when (currentNightMode) {
+            android.content.res.Configuration.UI_MODE_NIGHT_YES -> {
+                binding.cardWeatherInfo.setBackgroundResource(R.drawable.bg_card_dark)
+                binding.cardFloodPrediction.setBackgroundResource(R.drawable.bg_card_dark)
+                binding.mainContainer.setBackgroundResource(R.drawable.bg_gradient_dark)
+            }
+            android.content.res.Configuration.UI_MODE_NIGHT_NO -> {
+                binding.cardWeatherInfo.setBackgroundResource(R.drawable.bg_card_light)
+                binding.cardFloodPrediction.setBackgroundResource(R.drawable.bg_card_light)
+                binding.mainContainer.setBackgroundResource(R.drawable.bg_gradient_light)
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
