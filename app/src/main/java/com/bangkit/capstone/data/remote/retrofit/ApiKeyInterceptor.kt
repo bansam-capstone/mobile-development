@@ -13,13 +13,7 @@ class ApiKeyInterceptor : Interceptor {
             .method(original.method, original.body)
             .build()
 
-        Log.d("ApiKeyInterceptor", "Authorization header: ${request.header("Authorization")}")
-
         val response = chain.proceed(request)
-
-        Log.d("ApiKeyInterceptor", "Response code: ${response.code}")
-        Log.d("ApiKeyInterceptor", "Response body: ${response.body?.string()}")
-
         return response
     }
 }
