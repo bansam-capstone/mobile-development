@@ -69,10 +69,10 @@
                 android:id="@+id/tvWeatherDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:text="Broken Clouds"
-                android:textSize="18sp"
                 android:textColor="@color/white"
-                android:layout_marginTop="4dp" />
+                android:textSize="18sp" />
         </LinearLayout>
 
         <!-- Informasi Angin, Kelembapan, Tekanan -->
@@ -192,7 +192,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp">
 
                 <!-- Safe Status -->
                 <LinearLayout
@@ -327,15 +328,6 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"/>
 
-                <Button
-                    android:id="@+id/btnSeeAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lihat Semua"
-                    android:textColor="@color/white"
-                    android:backgroundTint="@color/white_25"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"/>
             </RelativeLayout>
 
             <!-- Status Prediksi Banjir -->
