@@ -84,6 +84,10 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.49")
     kapt("com.google.dagger:hilt-android-compiler:2.49")
 
+    //Bottom Sheet Dialog
+    implementation("com.google.android.material:material:1.12.0")
+
+
 }
 
 kapt {
