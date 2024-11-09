@@ -2,4 +2,56 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="white_25">#40FFFFFF</color>
+
+    // Dark Blue Colors
+    <color name="dark_blue_50">#E8EBEE</color>
+    <color name="dark_blue_100">#B8C0C9</color>
+    <color name="dark_blue_200">#96A2AF</color>
+    <color name="dark_blue_300">#66788A</color>
+    <color name="dark_blue_400">#485D73</color>
+    <color name="dark_blue_500">#1A3550</color>
+    <color name="dark_blue_600">#183049</color>
+    <color name="dark_blue_700">#122639</color>
+    <color name="dark_blue_800">#0E1D2C</color>
+    <color name="dark_blue_900">#0B1622</color>
+
+    // Light Blue Colors
+
+    // Danger Colors
+    <color name="danger_50">#FDECEC</color>
+    <color name="danger_100">#FAC5C3</color>
+    <color name="danger_200">#F7A9A7</color>
+    <color name="danger_300">#F4827E</color>
+    <color name="danger_400">#F16965</color>
+    <color name="danger_500">#EE443F</color>
+    <color name="danger_600">#D93E39</color>
+    <color name="danger_700">#A9302D</color>
+    <color name="danger_800">#832523</color>
+    <color name="danger_900">#641D1A</color>
+
+    // Safe Colors
+    <color name="safe_50">#EDF8F0</color>
+    <color name="safe_100">#C8EAD0</color>
+    <color name="safe_200">#AEE0B9</color>
+    <color name="safe_300">#89D299</color>
+    <color name="safe_400">#72C985</color>
+    <color name="safe_500">#4FBC67</color>
+    <color name="safe_600">#48AB5E</color>
+    <color name="safe_700">#388549</color>
+    <color name="safe_800">#2B6739</color>
+    <color name="safe_900">#214F2B</color>
+
+    // Warning Colors
+    <color name="warning_50">#FEFAEB</color>
+    <color name="warning_100">#FCF0C0</color>
+    <color name="warning_200">#FAE8A2</color>
+    <color name="warning_300">#F8DE78</color>
+    <color name="warning_400">#F7D85D</color>
+    <color name="warning_500">#F5CE35</color>
+    <color name="warning_600">#DFBB30</color>
+    <color name="warning_700">#AE9226</color>
+    <color name="warning_800">#87711D</color>
+    <color name="warning_900">#675716</color>
 </resources>
