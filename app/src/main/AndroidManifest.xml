@@ -39,7 +39,7 @@
         <activity
             android:name=".presentation.view.main.HomeActivity"
             android:exported="true"
-            android:label="">
+            android:label="Bansam">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

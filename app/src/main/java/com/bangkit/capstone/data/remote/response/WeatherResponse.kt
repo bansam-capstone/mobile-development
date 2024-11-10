@@ -15,7 +15,7 @@ data class WeatherResponse(
 data class WeatherResponseItem(
 
 	@field:SerializedName("rain")
-	val rain: Int? = null,
+	val rain: Double? = null,
 
 	@field:SerializedName("visibility")
 	val visibility: Int? = null,
@@ -39,7 +39,7 @@ data class WeatherResponseItem(
 	val cloudiness: Int? = null,
 
 	@field:SerializedName("snow")
-	val snow: Int? = null,
+	val snow: Double? = null,
 
 	@field:SerializedName("temperature")
 	val temperature: Double? = null,

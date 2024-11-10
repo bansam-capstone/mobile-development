@@ -24,7 +24,7 @@
                 android:id="@+id/tvLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Samarinda"
+                android:text="Kota"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:drawablePadding="8dp"
@@ -36,7 +36,7 @@
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kamis, 31 Oktober 2024"
+                android:text="----"
                 android:textSize="16sp"
                 android:textColor="@color/white"
                 android:layout_marginBottom="16dp"/>
@@ -60,7 +60,7 @@
                 android:id="@+id/tvTemperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="28°C"
+                android:text="--°C"
                 android:textSize="32sp"
                 android:textStyle="bold"
                 android:textColor="@color/white" />
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Broken Clouds"
+                android:text="----"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -101,7 +101,7 @@
                     android:id="@+id/tvWindSpeed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1.54 m/s"
+                    android:text="-- m/s"
                     android:textSize="16sp"
                     android:textColor="@color/white"
                     android:layout_marginTop="4dp"/>
@@ -132,7 +132,7 @@
                     android:id="@+id/tvHumidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="90%"
+                    android:text="--%"
                     android:textSize="16sp"
                     android:textColor="@color/white"
                     android:layout_marginTop="4dp"/>
@@ -163,7 +163,7 @@
                     android:id="@+id/tvPressure"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1010 hPa"
+                    android:text="-- hPa"
                     android:textSize="16sp"
                     android:textColor="@color/white"
                     android:layout_marginTop="4dp"/>
