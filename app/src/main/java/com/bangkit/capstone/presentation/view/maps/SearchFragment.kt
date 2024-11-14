@@ -2,23 +2,27 @@ package com.bangkit.capstone.presentation.view.maps
 
 import android.location.Geocoder
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.capstone.databinding.FragmentSearchBinding
 import com.bangkit.capstone.presentation.view.adapter.SuggestionsAdapter
+import com.bangkit.capstone.presentation.viewmodel.SearchHistoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
     private lateinit var suggestionsAdapter: SuggestionsAdapter
+    private val searchHistoryViewModel: SearchHistoryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,35 +36,45 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupAdapters()
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let { getAddressSuggestions(it) }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { getAddressSuggestions(it) }
+                return false
+            }
+        })
+    }
+
+    private fun setupAdapters() {
         suggestionsAdapter = SuggestionsAdapter { address ->
-            val action = SearchFragmentDirections.actionSearchFragmentToMapsFragment(
-                address.latitude.toFloat(),
-                address.longitude.toFloat()
-            )
-            findNavController().navigate(action)
+            val timestamp = System.currentTimeMillis()
+            viewLifecycleOwner.lifecycleScope.launch {
+//                searchHistoryViewModel.insertSearchHistory(
+//                    address.getAddressLine(0).toString(),
+//                    address.getAddressLine(1).toString(),
+//                    address.latitude,
+//                    address.longitude,
+//                    timestamp
+//                )
+
+                val action = SearchFragmentDirections.actionSearchFragmentToMapsFragment(
+                    latitude = address.latitude.toFloat(),
+                    longitude = address.longitude.toFloat()
+                )
+                findNavController().navigate(action)
+            }
         }
 
         binding.rvSearch.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = suggestionsAdapter
         }
-
-        binding.searchView.requestFocus()
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let {
-                    getAddressSuggestions(it)
-                }
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                if (newText != null && newText.length > 2) {
-                    getAddressSuggestions(newText)
-                }
-                return false
-            }
-        })
     }
 
     private fun getAddressSuggestions(query: String) {
@@ -68,11 +82,9 @@ class SearchFragment : Fragment() {
         try {
             val addresses = geocoder.getFromLocationName(query, 10)
             if (!addresses.isNullOrEmpty()) {
-                Log.d("SearchFragment", "Jumlah alamat yang diterima: ${addresses.size}")
                 binding.rvSearch.visibility = View.VISIBLE
                 suggestionsAdapter.submitList(addresses)
             } else {
-                Log.d("SearchFragment", "Tidak ada alamat yang ditemukan untuk query: $query")
                 binding.rvSearch.visibility = View.GONE
             }
         } catch (e: Exception) {
@@ -80,5 +92,4 @@ class SearchFragment : Fragment() {
             binding.rvSearch.visibility = View.GONE
         }
     }
-
 }

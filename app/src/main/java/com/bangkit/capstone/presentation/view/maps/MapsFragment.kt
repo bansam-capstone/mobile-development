@@ -88,16 +88,18 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
         if (latitude != 0.0f && longitude != 0.0f) {
             val selectedLocation = LatLng(latitude.toDouble(), longitude.toDouble())
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(selectedLocation, 12f))
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(selectedLocation, 13f))
             mMap.addMarker(MarkerOptions().position(selectedLocation).title("Lokasi yang dipilih!"))
         } else {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(initialLocation))
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(initialLocation, 12f))
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(initialLocation, 13f))
         }
 
         mMap.setOnMarkerClickListener { marker ->
             marker.title?.let {
                 showBottomSheet(it, "Deskripsi untuk ${marker.title}")
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(marker.position))
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.position, 15f))
             }
             true
         }

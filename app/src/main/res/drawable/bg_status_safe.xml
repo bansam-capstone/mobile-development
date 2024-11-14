@@ -1,0 +1,14 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Warna background untuk status aman -->
+    <solid android:color="@color/success_100" />
+
+    <!-- Sudut melengkung -->
+    <corners android:radius="24dp" />
+
+    <!-- Margin atau padding jika diperlukan -->
+    <padding
+        android:left="16dp"
+        android:right="16dp"
+        android:top="4dp"
+        android:bottom="4dp" />
+</shape>
