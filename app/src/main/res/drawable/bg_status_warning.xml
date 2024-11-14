@@ -1,0 +1,12 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Warna background untuk status aman -->
+    <solid android:color="@color/warning_100" />
+
+    <corners android:radius="24dp" />
+
+    <padding
+        android:left="16dp"
+        android:right="16dp"
+        android:top="4dp"
+        android:bottom="4dp" />
+</shape>

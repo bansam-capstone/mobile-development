@@ -1,8 +1,10 @@
 package com.bangkit.capstone.domain.repository
 
+import com.bangkit.capstone.data.remote.response.LocationResponse
 import com.bangkit.capstone.data.remote.response.WeatherResponse
-import com.bangkit.capstone.data.remote.response.WeatherResponseItem
 
 interface WeatherRepository {
-    suspend fun getWeather(): List<WeatherResponseItem>
+    suspend fun getWeather(): WeatherResponse
+
+    suspend fun getWeatherByLocation(location: String): LocationResponse
 }

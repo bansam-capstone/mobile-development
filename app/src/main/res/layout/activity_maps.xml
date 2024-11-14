@@ -7,33 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".presentation.view.maps.MapsActivity">
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <LinearLayout
-        android:id="@+id/searchContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="16dp"
-        android:padding="8dp"
-        android:layout_alignParentTop="true"
-        android:elevation="4dp">
-
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:queryHint="Search here"
-            android:iconifiedByDefault="false"
-            android:layout_gravity="center"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
-            android:background="@drawable/rounded_background"
-            app:tint="@android:color/black" />
-    </LinearLayout>
+        android:layout_height="match_parent"
+        app:navGraph="@navigation/nav_graph"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true" />
 
 </RelativeLayout>

@@ -5,6 +5,8 @@
 
     <color name="white_25">#40FFFFFF</color>
 
+    <color name="shimmerColor">#E3E3E3</color>
+
     // Dark Blue Colors
     <color name="dark_blue_50">#E8EBEE</color>
     <color name="dark_blue_100">#B8C0C9</color>
@@ -17,41 +19,40 @@
     <color name="dark_blue_800">#0E1D2C</color>
     <color name="dark_blue_900">#0B1622</color>
 
-    // Light Blue Colors
+    // Blue Colors
+    <color name="blue_50">#EFF5FC</color>
+    <color name="blue_100">#CCE0F5</color>
+    <color name="blue_200">#B4D1F1</color>
+    <color name="blue_300">#91BBEA</color>
+    <color name="blue_400">#7CAEE6</color>
+    <color name="blue_500">#5B9AE0</color>
+    <color name="blue_600">#538CCC</color>
+    <color name="blue_700">#416D9F</color>
+    <color name="blue_800">#32557B</color>
+    <color name="blue_900">#26415E</color>
 
-    // Danger Colors
-    <color name="danger_50">#FDECEC</color>
-    <color name="danger_100">#FAC5C3</color>
-    <color name="danger_200">#F7A9A7</color>
-    <color name="danger_300">#F4827E</color>
-    <color name="danger_400">#F16965</color>
-    <color name="danger_500">#EE443F</color>
-    <color name="danger_600">#D93E39</color>
-    <color name="danger_700">#A9302D</color>
-    <color name="danger_800">#832523</color>
-    <color name="danger_900">#641D1A</color>
-
-    // Safe Colors
-    <color name="safe_50">#EDF8F0</color>
-    <color name="safe_100">#C8EAD0</color>
-    <color name="safe_200">#AEE0B9</color>
-    <color name="safe_300">#89D299</color>
-    <color name="safe_400">#72C985</color>
-    <color name="safe_500">#4FBC67</color>
-    <color name="safe_600">#48AB5E</color>
-    <color name="safe_700">#388549</color>
-    <color name="safe_800">#2B6739</color>
-    <color name="safe_900">#214F2B</color>
+    // success Colors
+    <color name="success_50">#DFF8EC</color>
+    <color name="success_100">#B2ECD0</color>
+    <color name="success_300">#15D293</color>
+    <color name="success_500">#00BC65</color>
+    <color name="success_700">#00994D</color>
+    <color name="success_900">#00672B</color>
 
     // Warning Colors
-    <color name="warning_50">#FEFAEB</color>
-    <color name="warning_100">#FCF0C0</color>
-    <color name="warning_200">#FAE8A2</color>
-    <color name="warning_300">#F8DE78</color>
-    <color name="warning_400">#F7D85D</color>
-    <color name="warning_500">#F5CE35</color>
-    <color name="warning_600">#DFBB30</color>
-    <color name="warning_700">#AE9226</color>
-    <color name="warning_800">#87711D</color>
-    <color name="warning_900">#675716</color>
+    <color name="warning_50">#FDF8E1</color>
+    <color name="warning_100">#FBEBB4</color>
+    <color name="warning_300">#F7D352</color>
+    <color name="warning_500">#F5BF17</color>
+    <color name="warning_700">#F59F0B</color>
+    <color name="warning_900">#F47103</color>
+
+    // Danger Colors
+    <color name="danger_50">#FFEAED</color>
+    <color name="danger_100">#FFC9CE</color>
+    <color name="danger_300">#E6696A</color>
+    <color name="danger_500">#E9342D</color>
+    <color name="danger_700">#D31121</color>
+    <color name="danger_900">#B7000C</color>
+
 </resources>

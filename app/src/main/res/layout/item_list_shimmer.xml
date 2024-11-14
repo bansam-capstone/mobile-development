@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical">
+
+        <!-- Icon Status -->
+        <ImageView
+            android:id="@+id/statusIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/shimmerColor" />
+
+        <!-- Location and Address -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
+
+            <!-- Address Line -->
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:background="@color/shimmerColor" />
+
+            <!-- Status Label -->
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/success_900"
+                android:background="@color/shimmerColor" />
+
+        </LinearLayout>
+
+        <!-- Arrow Icon for Navigation -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@color/shimmerColor"
+            app:tint="@color/black" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

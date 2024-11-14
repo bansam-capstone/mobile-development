@@ -19,13 +19,25 @@
         android:theme="@style/Theme.Capstone"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.view.termsandpolicy.TermsPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.about.AboutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.prediction.PredictionActivity"
+            android:exported="false"
+            android:label="Titik Lokasi Banjir" />
+        <activity
+            android:name=".presentation.view.help.HelpActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.view.maps.MapsActivity"
             android:exported="false"
-            android:label=""/>
+            android:label="" />
         <activity
             android:name=".presentation.view.mitigation.MitigationActivity"
-            android:exported="false"
-            android:label="Lokasi Rawan Banjir"/>
+            android:exported="false" />
         <activity
             android:name=".presentation.view.settings.SettingsActivity"
             android:exported="false"
@@ -39,7 +51,8 @@
         <activity
             android:name=".presentation.view.main.HomeActivity"
             android:exported="true"
-            android:label="">
+            android:label="Bansam"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
