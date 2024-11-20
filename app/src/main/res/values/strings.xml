@@ -1,8 +1,104 @@
 <resources>
-    <string name="app_name">Bansam</string>
+    <string name="app_name">BanSam</string>
     <string name="settings_title">Pengaturan</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_hint">Cari Lokasi</string>
     <string name="help_title">Bantuan</string>
+
+    // Mitigation
+    <string name="mitigasi_banjir_title">Mitigasi Banjir</string>
+
+    <!-- Subjudul -->
+    <string name="subjudul_sebelum_banjir">Sebelum Banjir Terjadi</string>
+    <string name="subjudul_ketika_peringatan_banjir">Ketika Ada Peringatan Banjir</string>
+    <string name="subjudul_saat_banjir_terjadi">Saat Banjir Terjadi</string>
+    <string name="subjudul_setelah_banjir_surut">Setelah Banjir Surut</string>
+
+    <!-- Deskripsi -->
+    <string-array name="list_sebelum_banjir">
+        <item>Kenali area-area yang rawan banjir di sekitar tempat tinggal.</item>
+        <item>Pantau risiko banjir secara rutin melalui platform terpercaya.</item>
+        <item>Koordinasikan protokol penanganan banjir dengan tetangga untuk memperkuat kesiapsiagaan bersama.</item>
+        <item>Simpan dokumen penting dalam bentuk digital agar lebih aman.</item>
+        <item>Pahami kebutuhan khusus anggota keluarga dan siapkan rencana sesuai kebutuhan mereka.</item>
+    </string-array>
+
+    <string-array name="list_ketika_peringatan_banjir">
+        <item>Perhatikan informasi peringatan dini dari aplikasi, notifikasi, atau media sosial.</item>
+        <item>Pindahkan barang-barang berharga ke tempat yang aman dan tinggi.</item>
+        <item>Matikan aliran listrik untuk mencegah bahaya korsleting.</item>
+        <item>Persiapkan tas darurat dengan kebutuhan penting.</item>
+        <item>Ikuti arahan dan instruksi dari petugas terkait.</item>
+    </string-array>
+
+    <string-array name="list_saat_banjir_terjadi">
+        <item>Dapatkan informasi terbaru dari sumber berita terpercaya.</item>
+        <item>Jika aman, laporkan kondisi banjir melalui jalur darurat yang tersedia.</item>
+        <item>Hindari berjalan di arus air, saluran, atau genangan yang dapat menyembunyikan bahaya.</item>
+        <item>Siapkan tas darurat di dekat Anda untuk dibawa sewaktu-waktu jika harus mengungsi.</item>
+    </string-array>
+
+    <string-array name="list_setelah_banjir_surut">
+        <item>Cari informasi dari sumber resmi mengenai kondisi terkini dan lokasi banjir.</item>
+        <item>Kembali ke rumah hanya setelah pihak berwenang memastikan aman.</item>
+        <item>Gunakan sepatu yang kuat untuk melindungi kaki dari benda tajam, seperti paku atau pecahan kaca.</item>
+        <item>Bersihkan lumpur dan puing-puing dengan hati-hati, serta pastikan keselamatan selama proses pembersihan.</item>
+    </string-array>
+
+    // About
+    <string name="app_version">Versi 1.0</string>
+    <string name="app_description">Bansam adalah aplikasi yang dirancang khusus untuk membantu masyarakat Kota Samarinda dalam menghadapi ancaman banjir. Kami menyediakan informasi terkini mengenai area rawan banjir, kondisi cuaca, dan prediksi banjir, serta memberi akses ke informasi penting saat terjadi bencana banjir.</string>
+    <string name="mission_title">Misi Kami</string>
+    <string name="mission_description">Menyediakan informasi banjir yang akurat dan cepat agar masyarakat dapat lebih siap dalam menghadapi situasi darurat, serta meningkatkan kesadaran akan pentingnya tindakan pencegahan.</string>
+    <string name="features_title">Fitur Utama</string>
+    <string name="features_list">• Peta Interaktif yang menyajikan data area banjir secara real-time.\n• Peringatan dini yang berupa notifikasi prediksi banjir untuk tindakan pencegahan banjir.</string>
+
+    // Help
+    <string name="faq_title">FAQ</string>
+    <string-array name="faq_questions">
+        <item>Apakah aplikasi BANSAM hanya bisa digunakan di Kota Samarinda?</item>
+        <item>Apakah informasi yang disajikan real-time?</item>
+        <item>Apakah aplikasi ini memerlukan akses internet untuk digunakan?</item>
+        <item>Apakah aplikasi ini akan mengirimkan peringatan jika ada kondisi darurat banjir?</item>
+        <item>Apakah saya bisa menonaktifkan notifikasi jika tidak ingin menerima pemberitahuan?</item>
+    </string-array>
+    <string-array name="faq_answers">
+        <item>Aplikasi BANSAM dirancang khusus untuk masyarakat Kota Samarinda, namun bisa digunakan di daerah lain dengan beberapa penyesuaian.</item>
+        <item>Informasi yang disajikan oleh aplikasi ini bersifat real-time, termasuk prediksi banjir dan kondisi cuaca terkini.</item>
+        <item>Ya, aplikasi ini memerlukan akses internet untuk mengambil data terkini mengenai kondisi cuaca dan banjir.</item>
+        <item>Aplikasi ini akan mengirimkan notifikasi sebagai peringatan dini jika ada kondisi darurat terkait banjir di wilayah Anda.</item>
+        <item>Ya, Anda bisa menonaktifkan notifikasi di pengaturan aplikasi jika tidak ingin menerima pemberitahuan.</item>
+    </string-array>
+
+    <string name="title_terms">Ketentuan Pengguna</string>
+    <string name="title_policy">Kebijakan Privasi</string>
+
+    // Privacy Policy
+    <string name="policy_title">Kebijakan Privasi</string>
+    <string name="policy_subtitle">Terakhir diperbarui 1 November 2024</string>
+    <string name="policy_description">Baca kebijakan privasi penggunaan aplikasi Bansam dengan saksama sebelum menyetujui atau menggunakan aplikasi Bansam.</string>
+    <string name="policy_highlighted">Dengan menggunakan Bansam, Anda setuju untuk memenuhi kebijakan privasi ini.</string>
+    <string-array name="policy_content">
+        <item>1. Informasi yang Kami Kumpulkan\n\nDengan izin Anda, kami mungkin mengumpulkan data lokasi untuk memberikan informasi yang relevan mengenai kondisi banjir di sekitar Anda.</item>
+        <item>2. Penggunaan Informasi\n\nMemberikan layanan yang sesuai dengan kebutuhan Anda, termasuk prediksi dan informasi tentang area rawan banjir, dan mengirimkan pemberitahuan dan peringatan dini terkait kondisi banjir, jika diperlukan.</item>
+        <item>3. Perlindungan Informasi\n\nKami menjaga keamanan data pribadi Anda dan berkomitmen untuk melindungi data Anda dari akses yang tidak sah, penyalahgunaan, atau perubahan. Kami menggunakan berbagai langkah keamanan teknis dan operasional untuk memastikan informasi Anda aman.</item>
+        <item>4. Penggunaan Data Lokasi\n\nData lokasi Anda digunakan untuk memberikan informasi yang relevan tentang area banjir di sekitar Anda. Data lokasi ini hanya akan diakses dengan izin Anda dan tidak akan disimpan atau dibagikan tanpa persetujuan.</item>
+        <item>5. Perubahan Kebijakan Privasi\n\nKami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu. Setiap perubahan akan kami informasikan melalui aplikasi, dan perubahan tersebut akan berlaku segera setelah diterbitkan. Kami menyarankan Anda untuk memeriksa kebijakan ini secara berkala untuk memahami perubahan terbaru.</item>
+    </string-array>
+
+    // Terms Of Use
+    <string name="terms_title">Ketentuan Pengguna</string>
+    <string name="terms_subtitle">Terakhir diperbarui 1 November 2024</string>
+    <string name="terms_description">Baca syarat dan ketentuan penggunaan aplikasi Bansam dengan saksama sebelum menyetujui atau menggunakan aplikasi Bansam.</string>
+    <string name="terms_highlighted">Dengan menggunakan Bansam, Anda setuju untuk memenuhi syarat dan ketentuan ini.</string>
+    <string-array name="terms_content">
+        <item>1. Penggunaan Aplikasi\n\nAplikasi Bansam dibuat untuk membantu pengguna dalam mendapatkan informasi terkait area rawan banjir dan prediksi banjir di Kota Samarinda. Informasi yang tersedia hanya bertujuan sebagai panduan dan tidak menjamin keselamatan pengguna. Pengguna diharapkan untuk selalu berhati-hati dan mengikuti petunjuk dari otoritas setempat saat terjadi situasi darurat.</item>
+        <item>2. Akurasi Informasi\n\nKami berusaha untuk menyediakan informasi yang akurat dan terkini. Namun, kami tidak bertanggung jawab atas ketepatan, kelengkapan, atau keterbaruan informasi yang ditampilkan dalam aplikasi. Bansam tidak bertanggung jawab atas kerugian atau dampak yang timbul akibat penggunaan informasi yang disediakan.</item>
+        <item>3. Privasi Pengguna\n\nPrivasi Anda penting bagi kami. Kami berkomitmen untuk melindungi data pribadi pengguna sesuai dengan kebijakan privasi yang berlaku. Data yang kami kumpulkan hanya akan digunakan untuk keperluan aplikasi dan tidak akan dibagikan kepada pihak ketiga tanpa persetujuan pengguna.</item>
+        <item>4. Hak Cipta dan Konten\n\nSeluruh konten dalam aplikasi Bansam, termasuk teks, gambar, logo, dan ikon, dilindungi oleh hak cipta. Pengguna dilarang mendistribusikan, mengubah, atau mereproduksi konten aplikasi ini tanpa izin tertulis dari kami.</item>
+        <item>5. Perubahan Ketentuan\n\nBansam berhak untuk mengubah atau memperbarui ketentuan penggunaan ini sewaktu-waktu. Perubahan akan diinformasikan melalui aplikasi, dan pengguna diharapkan untuk selalu memperhatikan ketentuan terbaru yang berlaku.</item>
+        <item>6. Batasan Tanggung Jawab\n\nBansam tidak bertanggung jawab atas kerugian langsung maupun tidak langsung yang diakibatkan oleh penggunaan atau ketidakmampuan menggunakan aplikasi ini, termasuk namun tidak terbatas pada, kehilangan data atau kerusakan perangkat.</item>
+    </string-array>
+
 </resources>

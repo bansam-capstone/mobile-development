@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.capstone.R
 import com.bangkit.capstone.databinding.FragmentSearchBinding
 import com.bangkit.capstone.presentation.view.adapter.SuggestionsAdapter
 import com.bangkit.capstone.presentation.viewmodel.SearchHistoryViewModel
@@ -38,7 +39,12 @@ class SearchFragment : Fragment() {
 
         setupAdapters()
 
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+        binding.searchViewSearch.setOnClickListener {
+            findNavController().navigate(R.id.action_searchFragment_to_mapsFragment)
+        }
+
+        binding.searchViewSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let { getAddressSuggestions(it) }
                 return false

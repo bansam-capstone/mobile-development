@@ -1,6 +1,5 @@
 package com.bangkit.capstone.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,6 +22,7 @@ class WeatherViewModel @Inject constructor(
 ) : ViewModel() {
     private val _weather = MutableLiveData<List<WeatherResponse>>()
     val weather: LiveData<List<WeatherResponse>> = _weather
+
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading

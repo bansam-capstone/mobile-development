@@ -4,23 +4,10 @@
     android:id="@+id/mainContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_500"
+    android:background="@color/blue_400"
     tools:context=".presentation.view.main.HomeActivity">
 
-<!--    <com.facebook.shimmer.ShimmerFrameLayout-->
-<!--        android:id="@+id/shimmerLayout"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_centerInParent="true"-->
-<!--        app:shimmer_duration="1000">-->
-
-<!--        <include layout="@layout/activity_home_shimmer" />-->
-
-<!--    </com.facebook.shimmer.ShimmerFrameLayout>-->
-
-
     <ScrollView
-        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -45,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:text="Kota"
                     android:textSize="24sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_bold"
                     android:drawablePadding="8dp"
                     android:textColor="@color/white"
                     app:drawableEndCompat="@drawable/ic_outline_location_on_24" />
@@ -79,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:text="--°C"
                     android:textSize="48sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/white" />
 
                 <TextView
@@ -89,6 +76,7 @@
                     android:layout_marginTop="4dp"
                     android:text="----"
                     android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_bold"
                     android:textSize="24sp" />
             </LinearLayout>
 
@@ -98,7 +86,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="8dp"
                 android:background="@drawable/bg_card_light"
                 android:padding="16dp">
 
@@ -121,8 +108,8 @@
                         android:layout_height="wrap_content"
                         android:text="-- m/s"
                         android:textSize="16sp"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="4dp"/>
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/tvWindSpeedTitle"
@@ -130,8 +117,7 @@
                         android:layout_height="wrap_content"
                         android:text="Kecepatan Angin"
                         android:textSize="12sp"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="4dp"/>
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
                 <!-- Humidity Section -->
@@ -153,8 +139,8 @@
                         android:layout_height="wrap_content"
                         android:text="--%"
                         android:textSize="16sp"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="4dp"/>
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/tvHumidityTitle"
@@ -162,8 +148,7 @@
                         android:layout_height="wrap_content"
                         android:text="Kelembapan"
                         android:textSize="12sp"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="4dp"/>
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
                 <!-- Pressure Section -->
@@ -185,8 +170,8 @@
                         android:layout_height="wrap_content"
                         android:text="-- hPa"
                         android:textSize="16sp"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="4dp"/>
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/tvPressureTitle"
@@ -194,8 +179,7 @@
                         android:layout_height="wrap_content"
                         android:text="Tekanan"
                         android:textSize="12sp"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="4dp"/>
+                        android:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -232,10 +216,12 @@
                                 android:src="@drawable/ic_prediction_safe" />
 
                             <TextView
+                                android:id="@+id/tvSafeStatus"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="12"
+                                android:text="0"
                                 android:textSize="24sp"
+                                android:fontFamily="@font/poppins_bold"
                                 android:textColor="@android:color/white"
                                 android:gravity="center"
                                 android:layout_marginTop="4dp" />
@@ -247,6 +233,7 @@
                             android:layout_height="wrap_content"
                             android:text="Aman"
                             android:textSize="14sp"
+                            android:fontFamily="@font/poppins_bold"
                             android:textColor="@android:color/white"
                             android:gravity="center" />
                     </LinearLayout>
@@ -271,10 +258,12 @@
                                 android:src="@drawable/ic_prediction_warning" />
 
                             <TextView
+                                android:id="@+id/tvWarningStatus"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="12"
+                                android:text="0"
                                 android:textSize="24sp"
+                                android:fontFamily="@font/poppins_bold"
                                 android:textColor="@android:color/white"
                                 android:gravity="center"
                                 android:layout_marginTop="4dp" />
@@ -287,6 +276,7 @@
                             android:layout_height="wrap_content"
                             android:text="Waspada"
                             android:textSize="14sp"
+                            android:fontFamily="@font/poppins_bold"
                             android:textColor="@android:color/white"
                             android:gravity="center" />
                     </LinearLayout>
@@ -310,9 +300,11 @@
                                 android:src="@drawable/ic_prediction_danger" />
 
                             <TextView
+                                android:id="@+id/tvDangerStatus"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="12"
+                                android:text="0"
+                                android:fontFamily="@font/poppins_bold"
                                 android:textSize="24sp"
                                 android:textColor="@android:color/white"
                                 android:gravity="center"
@@ -325,6 +317,7 @@
                             android:layout_height="wrap_content"
                             android:text="Bahaya"
                             android:textSize="14sp"
+                            android:fontFamily="@font/poppins_bold"
                             android:textColor="@android:color/white"
                             android:gravity="center" />
                     </LinearLayout>
@@ -352,10 +345,18 @@
                         android:layout_height="wrap_content"
                         android:text="Prediksi Banjir Terkini"
                         android:textSize="18sp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_bold"
                         android:textColor="@color/white" />
 
                 </RelativeLayout>
+
+                <ProgressBar
+                    android:id="@+id/pbWeatherPredictionLoading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:layout_marginBottom="8dp"
+                    android:visibility="gone"/>
 
                 <!-- Status Prediksi Banjir -->
                 <LinearLayout
@@ -379,6 +380,7 @@
                         android:layout_marginStart="8dp">
 
                         <TextView
+                            android:id="@+id/tvFloodPredictionSlametRiyadiTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Jl. Slamet Riyadi"
@@ -428,6 +430,7 @@
                         android:layout_marginStart="8dp">
 
                         <TextView
+                            android:id="@+id/tvFloodPredictionAntasariTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Jl. Pangeran Antasari"
@@ -501,7 +504,7 @@
                         android:layout_height="wrap_content"
                         android:text="Persebaran Titik Rawan Banjir "
                         android:textSize="18sp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_bold"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -547,7 +550,7 @@
                         android:layout_height="wrap_content"
                         android:text="Tips Mitigasi Banjir"
                         android:textSize="18sp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_bold"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -556,6 +559,7 @@
                         android:text="Dapatkan tips praktis untuk menghadapi banjir, mulai dari persiapan, tindakan saat banjir, hingga langkah pemulihan."
                         android:textSize="14sp"
                         android:textColor="@color/white"
+
                         android:layout_below="@id/tvTipsMitigationTitle"
                         android:layout_marginTop="8dp"/>
 

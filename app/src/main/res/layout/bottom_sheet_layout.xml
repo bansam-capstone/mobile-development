@@ -1,21 +1,247 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottomSheetLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@drawable/bg_bottom_sheet"
     android:padding="16dp">
 
+    <View
+        android:id="@+id/bottomSheetDragIndicator"
+        android:layout_width="100dp"
+        android:layout_height="4dp"
+        android:background="@color/grey"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="4dp" />
+
+    <!-- Title: Location (Jl. Pangeran Antasari) -->
     <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
+        android:id="@+id/tvLocation"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:text="Jl. Pangeran Antasari"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="?attr/colorOnPrimary" />
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/tvLocationDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Kec. Samarinda Ulu, Kota Samarinda, Kalimantan Timur"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnPrimary"
+        android:layout_marginBottom="16dp" />
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp" />
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/bg_card_light"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp">
+
+        <!-- Weather Info Section -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/bg_card_light"
+            android:padding="16dp"
+            android:layout_marginBottom="8dp">
+
+            <!-- Weather Icon and Temperature -->
+            <ImageView
+                android:id="@+id/weatherIcon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_weather_day_fewclouds" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/tvTemperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24°C"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="8dp" />
+
+                <TextView
+                    android:id="@+id/tvCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cerah Berawan"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+        <!-- Flood Status Section -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/statusIcon"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_prediction_safe" />
+
+            <TextView
+                android:id="@+id/tvFloodStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status Banjir: Aman"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- Additional Information Section (Wind Speed, Humidity, Pressure) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/bg_card_light"
+            android:padding="15dp">
+
+            <!-- Wind Speed -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/windIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_wind_power_24" />
+
+                <TextView
+                    android:id="@+id/tvWindSpeed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1.54 m/s"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/tvWindSpeedTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kecepatan Angin"
+                    android:textSize="12sp"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <!-- Humidity -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/humidityIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_water_drop_24" />
+
+                <TextView
+                    android:id="@+id/tvHumidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="90%"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/tvHumidityTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kelembapan"
+                    android:textSize="12sp"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <!-- Pressure -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/pressureIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_water_24" />
+
+                <TextView
+                    android:id="@+id/tvPressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1010 hPa"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/tvPressureTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tekanan"
+                    android:textSize="12sp"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- CCTV Button -->
+    <Button
+        android:id="@+id/btnViewCCTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lihat CCTV"
+        android:fontFamily="@font/poppins_bold"
+        android:backgroundTint="@color/dark_blue_500"
+        android:gravity="center"
+        android:textColor="@color/white" />
 
 </LinearLayout>
