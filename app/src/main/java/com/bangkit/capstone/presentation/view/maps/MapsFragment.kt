@@ -2,8 +2,6 @@ package com.bangkit.capstone.presentation.view.maps
 
 import android.annotation.SuppressLint
 import android.content.res.Resources
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
@@ -14,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
+import android.widget.TableLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -43,7 +42,6 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.IOException
-import java.time.LocalTime
 import java.util.Locale
 
 @AndroidEntryPoint
@@ -237,17 +235,13 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         bottomSheetDialog = BottomSheetDialog(requireContext())
         val sheetView = layoutInflater.inflate(R.layout.bottom_sheet_layout, null)
         bottomSheetDialog?.setContentView(sheetView)
-
         with(sheetView) {
             findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
             findViewById<TextView>(R.id.tvLocation).visibility = View.GONE
             findViewById<TextView>(R.id.tvLocationDescription).visibility = View.GONE
-            findViewById<TextView>(R.id.tvTemperature).visibility = View.GONE
-            findViewById<TextView>(R.id.tvCondition).visibility = View.GONE
             findViewById<TextView>(R.id.tvWindSpeed).visibility = View.GONE
             findViewById<TextView>(R.id.tvHumidity).visibility = View.GONE
             findViewById<TextView>(R.id.tvPressure).visibility = View.GONE
-            findViewById<ImageView>(R.id.weatherIcon).visibility = View.GONE
             findViewById<ImageView>(R.id.statusIcon).visibility = View.GONE
             findViewById<TextView>(R.id.tvFloodStatus).visibility = View.GONE
         }
@@ -264,12 +258,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                     findViewById<ProgressBar>(R.id.progressBar).visibility = View.GONE
                     findViewById<TextView>(R.id.tvLocation).visibility = View.VISIBLE
                     findViewById<TextView>(R.id.tvLocationDescription).visibility = View.VISIBLE
-                    findViewById<TextView>(R.id.tvTemperature).visibility = View.VISIBLE
-                    findViewById<TextView>(R.id.tvCondition).visibility = View.VISIBLE
                     findViewById<TextView>(R.id.tvWindSpeed).visibility = View.VISIBLE
                     findViewById<TextView>(R.id.tvHumidity).visibility = View.VISIBLE
                     findViewById<TextView>(R.id.tvPressure).visibility = View.VISIBLE
-                    findViewById<ImageView>(R.id.weatherIcon).visibility = View.VISIBLE
                     findViewById<ImageView>(R.id.statusIcon).visibility = View.VISIBLE
                     findViewById<TextView>(R.id.tvFloodStatus).visibility = View.VISIBLE
 
@@ -279,15 +270,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                     findViewById<TextView>(R.id.tvLocation).text = streetName
                     findViewById<TextView>(R.id.tvLocationDescription).text = city
 
-                    val translatedDescription = descriptionToIndonesian(weather.description ?: "tidak diketahui")
-                    findViewById<TextView>(R.id.tvCondition).text = translatedDescription
-
-                    findViewById<TextView>(R.id.tvTemperature).text = weather.temperature?.let { "${it.toInt()}°C" } ?: "N/A"
                     findViewById<TextView>(R.id.tvWindSpeed).text = weather.windSpeed?.let { "${it} m/s" } ?: "N/A"
                     findViewById<TextView>(R.id.tvHumidity).text = weather.humidity?.let { "${it}%" } ?: "N/A"
                     findViewById<TextView>(R.id.tvPressure).text = weather.pressure?.let { "${it} hPa" } ?: "N/A"
-
-                    weather.description?.let { updateWeatherIcon(it, findViewById(R.id.weatherIcon)) }
 
                     weather.riskLevel?.let { updateRiskLevelIcon(it, findViewById(R.id.statusIcon), findViewById(R.id.tvFloodStatus)) }
                 }
@@ -333,51 +318,6 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
             val marker = mMap.addMarker(markerOptions)
             marker?.tag = location.identifier
-        }
-    }
-
-    private fun descriptionToIndonesian(description: String): String {
-        return when (description.lowercase(Locale.getDefault())) {
-            "clear sky" -> "Cerah"
-            "few clouds", "scattered clouds", "broken clouds", "overcast clouds" -> "Berawan"
-            "shower rain", "rain", "light rain", "moderate rain", "very heavy rain", "extreme rain" -> "Hujan"
-            "thunderstorm", "thunderstorm with light rain", "thunderstorm with heavy rain" -> "Badai Petir"
-            else -> "Tidak diketahui"
-        }
-    }
-
-    private fun updateWeatherIcon(weatherIcon: String, imageView: ImageView) {
-        val currentHour = LocalTime.now().hour
-        val isDaytime = currentHour in 6..18
-
-        when (weatherIcon.lowercase(Locale.getDefault())) {
-            "clear sky" -> {
-                imageView.setImageResource(
-                    if (isDaytime) R.drawable.ic_weather_day_clearsky
-                    else R.drawable.ic_weather_night_clearsky
-                )
-            }
-            "few clouds", "scattered clouds" -> {
-                imageView.setImageResource(
-                    if (isDaytime) R.drawable.ic_weather_day_fewclouds
-                    else R.drawable.ic_weather_night_fewclouds
-                )
-            }
-            "broken clouds", "overcast clouds" -> {
-                imageView.setImageResource(
-                    if (isDaytime) R.drawable.ic_weather_day_brokenclouds
-                    else R.drawable.ic_weather_night_brokenclouds
-                )
-            }
-            "shower rain", "rain", "light rain", "moderate rain", "very heavy rain", "extreme rain" -> {
-                imageView.setImageResource(R.drawable.ic_weather_daynight_rain)
-            }
-            "thunderstorm", "thunderstorm with light rain", "thunderstorm with heavy rain" -> {
-                imageView.setImageResource(R.drawable.ic_weather_daynight_tstorms)
-            }
-            else -> {
-                imageView.setImageResource(R.drawable.ic_weather_day_fewclouds)
-            }
         }
     }
 

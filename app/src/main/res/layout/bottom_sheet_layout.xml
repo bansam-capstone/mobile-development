@@ -36,59 +36,26 @@
         android:textColor="?attr/colorOnPrimary"
         android:layout_marginBottom="16dp" />
 
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:id="@+id/tabLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/bg_card_light"-->
+<!--        android:layout_marginBottom="16dp" />-->
+
+<!--    <androidx.viewpager2.widget.ViewPager2-->
+<!--        android:id="@+id/viewPager"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="16dp" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:background="@drawable/bg_card_light"
-        android:padding="16dp"
+        android:background="@drawable/bg_card_bottomsheet"
         android:layout_marginBottom="16dp">
-
-        <!-- Weather Info Section -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:background="@drawable/bg_card_light"
-            android:padding="16dp"
-            android:layout_marginBottom="8dp">
-
-            <!-- Weather Icon and Temperature -->
-            <ImageView
-                android:id="@+id/weatherIcon"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/ic_weather_day_fewclouds" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:id="@+id/tvTemperature"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="24°C"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:layout_marginStart="8dp" />
-
-                <TextView
-                    android:id="@+id/tvCondition"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cerah Berawan"
-                    android:textSize="16sp"
-                    android:textColor="@color/white"
-                    android:layout_marginStart="8dp" />
-            </LinearLayout>
-        </LinearLayout>
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -103,6 +70,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp">
 
             <ImageView
@@ -117,8 +85,8 @@
                 android:layout_height="wrap_content"
                 android:text="Status Banjir: Aman"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="?attr/colorOnPrimary"
                 android:layout_marginTop="8dp" />
         </LinearLayout>
 
@@ -128,7 +96,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:background="@drawable/bg_card_light"
+            android:background="@drawable/bg_card_sheet"
             android:padding="15dp">
 
             <!-- Wind Speed -->
@@ -151,6 +119,7 @@
                     android:layout_height="wrap_content"
                     android:text="1.54 m/s"
                     android:textSize="14sp"
+                    android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/white"
                     android:gravity="center" />
 
@@ -182,10 +151,11 @@
                     android:id="@+id/tvHumidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
                     android:text="90%"
-                    android:textSize="14sp"
                     android:textColor="@color/white"
-                    android:gravity="center" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvHumidityTitle"
@@ -206,7 +176,7 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:id="@+id/pressureIcon"
+                    android:id="@+id/pressureIcvon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_water_24" />
@@ -217,6 +187,7 @@
                     android:layout_height="wrap_content"
                     android:text="1010 hPa"
                     android:textSize="14sp"
+                    android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/white"
                     android:gravity="center" />
 
@@ -240,7 +211,7 @@
         android:layout_height="wrap_content"
         android:text="Lihat CCTV"
         android:fontFamily="@font/poppins_bold"
-        android:backgroundTint="@color/dark_blue_500"
+        android:backgroundTint="?attr/backgroundColor"
         android:gravity="center"
         android:textColor="@color/white" />
 
