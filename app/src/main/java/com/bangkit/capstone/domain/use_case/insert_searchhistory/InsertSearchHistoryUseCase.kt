@@ -1,11 +1,10 @@
 package com.bangkit.capstone.domain.use_case.insert_searchhistory
 
 import com.bangkit.capstone.common.Resource
-import com.bangkit.capstone.data.local.entity.SearchHistoryEntity
 import com.bangkit.capstone.domain.repository.SearchHistoryRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -22,13 +21,7 @@ class InsertSearchHistoryUseCase @Inject constructor(
         emit(Resource.Loading())
         try {
             withContext(Dispatchers.IO) {
-                repository.insertSearchHistory(
-                    title = title,
-                    subtitle = subtitle,
-                    latitude = latitude,
-                    longitude = longitude,
-                    timestamp = timestamp
-                )
+                repository.insertSearchHistory(title, subtitle, latitude, longitude, timestamp)
             }
             emit(Resource.Success(Unit))
         } catch (e: Exception) {
@@ -36,4 +29,3 @@ class InsertSearchHistoryUseCase @Inject constructor(
         }
     }
 }
-

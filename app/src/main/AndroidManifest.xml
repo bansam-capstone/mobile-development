@@ -19,25 +19,32 @@
         android:theme="@style/Theme.Capstone"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.view.help.DetailHelpActivity"
+            android:exported="false"
+            android:label="FAQ"/>
+        <activity
             android:name=".presentation.view.termsandpolicy.TermsPolicyActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.view.about.AboutActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Tentang"/>
         <activity
             android:name=".presentation.view.prediction.PredictionActivity"
             android:exported="false"
             android:label="Titik Lokasi Banjir" />
         <activity
             android:name=".presentation.view.help.HelpActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Tentang" />
         <activity
             android:name=".presentation.view.maps.MapsActivity"
             android:exported="false"
             android:label="" />
         <activity
             android:name=".presentation.view.mitigation.MitigationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Mitigasi"/>
         <activity
             android:name=".presentation.view.settings.SettingsActivity"
             android:exported="false"

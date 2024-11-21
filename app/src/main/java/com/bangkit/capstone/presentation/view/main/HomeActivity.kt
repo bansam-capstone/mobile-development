@@ -8,10 +8,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.bangkit.capstone.R
 import com.bangkit.capstone.common.Resource
+import com.bangkit.capstone.data.remote.response.LocationResponse
 import com.bangkit.capstone.databinding.ActivityHomeBinding
+import com.bangkit.capstone.domain.model.FloodCategories
 import com.bangkit.capstone.presentation.view.help.HelpActivity
 import com.bangkit.capstone.presentation.view.maps.MapsActivity
 import com.bangkit.capstone.presentation.view.mitigation.MitigationActivity
@@ -80,12 +83,30 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    private fun calculateFloodCategories(weatherList: List<LocationResponse>): FloodCategories {
+        var aman = 0
+        var waspada = 0
+        var bahaya = 0
+
+        weatherList.forEach { location ->
+            when (location.riskLevel) {
+                "Aman" -> aman++
+                "Waspada" -> waspada++
+                "Bahaya" -> bahaya++
+            }
+        }
+
+        return FloodCategories(aman, waspada, bahaya)
+    }
+
     private fun setupUI(){
         window.decorView.systemUiVisibility = (
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 )
         window.statusBarColor = android.graphics.Color.TRANSPARENT
+        window.navigationBarColor = android.graphics.Color.TRANSPARENT
 
         supportActionBar?.setDisplayShowTitleEnabled(false)
     }
@@ -109,21 +130,38 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun getDataPredictionData(){
-        weatherViewModel.getWeatherByLocation(listOf("slamet-riyadi", "antasari"))
+        weatherViewModel.getWeatherByLocation(listOf("slamet-riyadi", "antasari", "simpang-agus-salim", "mugirejo", "simpang-lembuswana",
+            "kapten-sudjono", "brigjend-katamso", "gatot-subroto", "cendana", "di-panjaitan",
+            "damanhuri", "pertigaan-pramuka-perjuangan", "padat-karya-sempaja-simpang-wanyi",
+            "simpang-sempaja", "ir-h-juanda", "tengkawang", "sukorejo"))
 
         lifecycleScope.launch {
             weatherViewModel.weatherData.collect { resource ->
                 when (resource) {
                     is Resource.Loading -> {
-//                        binding.shimmerLayout.startShimmer()
-//                        binding.shimmerLayout.visibility = View.VISIBLE
-//                        binding.scrollView.visibility = View.GONE
+                        binding.pbWeatherPredictionLoading.visibility = View.VISIBLE
+
+                        binding.tvFloodPredictionAntasari.visibility = View.GONE
+                        binding.tvFloodPredictionSlametRiyadi.visibility = View.GONE
+                        binding.ivFloodPredictionAntasari.visibility = View.GONE
+                        binding.ivFloodPredictionSlametRiyadi.visibility = View.GONE
+                        binding.llAntasari.visibility = View.GONE
+                        binding.llSlametRiyadi.visibility = View.GONE
+                        binding.tvFloodPredictionAntasariTitle.visibility = View.GONE
+                        binding.tvFloodPredictionSlametRiyadiTitle.visibility = View.GONE
+
                     }
                     is Resource.Success -> {
-//                        binding.shimmerLayout.stopShimmer()
-//                        binding.shimmerLayout.visibility = View.GONE
-//                        binding.scrollView.visibility = View.VISIBLE
+                        binding.pbWeatherPredictionLoading.visibility = View.GONE
 
+                        binding.tvFloodPredictionAntasari.visibility = View.VISIBLE
+                        binding.tvFloodPredictionSlametRiyadi.visibility = View.VISIBLE
+                        binding.ivFloodPredictionAntasari.visibility = View.VISIBLE
+                        binding.ivFloodPredictionSlametRiyadi.visibility = View.VISIBLE
+                        binding.llAntasari.visibility = View.VISIBLE
+                        binding.llSlametRiyadi.visibility = View.VISIBLE
+                        binding.tvFloodPredictionAntasariTitle.visibility = View.VISIBLE
+                        binding.tvFloodPredictionSlametRiyadiTitle.visibility = View.VISIBLE
                         val weatherList = resource.data
                         weatherList?.forEach { locationWeather ->
                             locationWeather.location?.let {
@@ -131,15 +169,15 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
                                     "slamet-riyadi" -> {
                                        binding.tvFloodPredictionSlametRiyadi.text = locationWeather.riskLevel ?: "Tidak diketahui"
                                         if (locationWeather.riskLevel == "Aman") {
-                                            binding.tvFloodPredictionSlametRiyadi.setTextColor(resources.getColor(R.color.success_500))
+                                            binding.tvFloodPredictionSlametRiyadi.setTextColor(resources.getColor(R.color.success_900))
                                             binding.ivFloodPredictionSlametRiyadi.setImageResource(R.drawable.ic_prediction_safe)
                                             binding.llSlametRiyadi.setBackgroundResource(R.drawable.bg_status_safe)
                                         } else if (locationWeather.riskLevel == "Waspada") {
-                                            binding.tvFloodPredictionSlametRiyadi.setTextColor(resources.getColor(R.color.warning_500))
+                                            binding.tvFloodPredictionSlametRiyadi.setTextColor(resources.getColor(R.color.warning_900))
                                             binding.ivFloodPredictionSlametRiyadi.setImageResource(R.drawable.ic_prediction_warning)
                                             binding.llSlametRiyadi.setBackgroundResource(R.drawable.bg_status_warning)
                                         } else if (locationWeather.riskLevel == "Bahaya") {
-                                            binding.tvFloodPredictionSlametRiyadi.setTextColor(resources.getColor(R.color.danger_500))
+                                            binding.tvFloodPredictionSlametRiyadi.setTextColor(resources.getColor(R.color.danger_900))
                                             binding.ivFloodPredictionSlametRiyadi.setImageResource(R.drawable.ic_prediction_danger)
                                             binding.llSlametRiyadi.setBackgroundResource(R.drawable.bg_status_danger)
                                         } else {
@@ -149,15 +187,15 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
                                     "antasari" -> {
                                         binding.tvFloodPredictionAntasari.text = locationWeather.riskLevel ?: "Tidak diketahui"
                                         if (locationWeather.riskLevel == "Aman") {
-                                            binding.tvFloodPredictionAntasari.setTextColor(resources.getColor(R.color.success_500))
+                                            binding.tvFloodPredictionAntasari.setTextColor(resources.getColor(R.color.success_900))
                                             binding.ivFloodPredictionAntasari.setImageResource(R.drawable.ic_prediction_safe)
                                             binding.llAntasari.setBackgroundResource(R.drawable.bg_status_safe)
                                         } else if (locationWeather.riskLevel == "Waspada") {
-                                            binding.tvFloodPredictionAntasari.setTextColor(resources.getColor(R.color.warning_500))
+                                            binding.tvFloodPredictionAntasari.setTextColor(resources.getColor(R.color.warning_900))
                                             binding.ivFloodPredictionAntasari.setImageResource(R.drawable.ic_prediction_warning)
                                             binding.llAntasari.setBackgroundResource(R.drawable.bg_status_warning)
                                         } else if (locationWeather.riskLevel == "Bahaya") {
-                                            binding.tvFloodPredictionAntasari.setTextColor(resources.getColor(R.color.danger_500))
+                                            binding.tvFloodPredictionAntasari.setTextColor(resources.getColor(R.color.danger_900))
                                             binding.ivFloodPredictionAntasari.setImageResource(R.drawable.ic_prediction_danger)
                                             binding.llAntasari.setBackgroundResource(R.drawable.bg_status_danger)
                                         } else {
@@ -165,19 +203,25 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
                                         }
                                     }
                                 }
+
+                                val categories = calculateFloodCategories(weatherList)
+                                updateFloodPredictionTotals(categories)
                             }
                         }
                     }
                     is Resource.Error -> {
-//                        binding.shimmerLayout.stopShimmer()
-//                        binding.shimmerLayout.visibility = View.GONE
-//                        binding.scrollView.visibility = View.GONE
-
+                        binding.pbWeatherPredictionLoading.visibility = View.GONE
                         Toast.makeText(this@HomeActivity, resource.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         }
+    }
+
+    private fun updateFloodPredictionTotals(categories: FloodCategories) {
+        binding.tvSafeStatus.text = categories.aman.toString()
+        binding.tvWarningStatus.text = categories.waspada.toString()
+        binding.tvDangerStatus.text = categories.bahaya.toString()
     }
 
 

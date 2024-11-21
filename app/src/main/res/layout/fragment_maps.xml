@@ -27,14 +27,14 @@
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:queryHint="Search here"
+            android:queryHint="Cari Lokasi"
             android:iconifiedByDefault="false"
             android:layout_gravity="center"
             android:paddingBottom="8dp"
             android:paddingTop="8dp"
             android:paddingRight="16dp"
             android:background="@drawable/rounded_background"
-            app:tint="@android:color/black" />
+            app:tint="@color/white" />
 
     </LinearLayout>
 

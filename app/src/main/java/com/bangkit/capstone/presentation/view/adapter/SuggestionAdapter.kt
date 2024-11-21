@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.capstone.R
+import com.bangkit.capstone.databinding.ItemListPredictionBinding
+import com.bangkit.capstone.databinding.ItemListSuggestionBinding
 
 class SuggestionsAdapter(
     private val onClick: (Address) -> Unit
@@ -21,8 +23,10 @@ class SuggestionsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuggestionViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_suggestion, parent, false)
-        return SuggestionViewHolder(view)
+        val binding = ItemListSuggestionBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+        return SuggestionViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: SuggestionViewHolder, position: Int) {
@@ -32,16 +36,18 @@ class SuggestionsAdapter(
 
     override fun getItemCount(): Int = suggestions.size
 
-    inner class SuggestionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val locationTitle: TextView = itemView.findViewById(R.id.locationTitle)
-        private val locationSubtitle: TextView = itemView.findViewById(R.id.locationSubtitle)
+    inner class SuggestionViewHolder(private val binding: ItemListSuggestionBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val locationTitle: TextView = binding.locationTitle
+        private val locationSubtitle: TextView = binding.locationSubtitle
 
         fun bind(address: Address) {
             locationTitle.text = address.featureName ?: "Unknown Location"
             locationSubtitle.text = address.getAddressLine(0)
 
-            itemView.setOnClickListener {
-                onClick(address)
+            binding.itemListSuggestion.setOnClickListener {
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    onClick(suggestions[adapterPosition])
+                }
             }
         }
     }

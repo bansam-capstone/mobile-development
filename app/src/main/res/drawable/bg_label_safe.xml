@@ -4,7 +4,7 @@
     <!--    Main Card-->
     <item android:top="4dp" android:left="2dp" android:right="2dp" android:bottom="8dp">
         <shape android:shape="rectangle">
-            <corners android:radius="16dp" />
+            <corners android:radius="20dp" />
             <solid android:color="@color/success_100" />
         </shape>
     </item>

@@ -2,10 +2,13 @@ package com.bangkit.capstone.presentation.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.capstone.R
 import com.bangkit.capstone.data.remote.response.LocationResponse
 import com.bangkit.capstone.databinding.ItemListPredictionBinding
+import com.bangkit.capstone.domain.model.LocationInfo
+import com.google.android.gms.maps.model.LatLng
 
 class PredictionAdapter(
     private val locationAddressMap: Map<String, String>,
@@ -62,7 +65,13 @@ class PredictionAdapter(
                 }
             }
 
-            binding.root.setOnClickListener { onItemClick(prediction) }
+            binding.llPrediction.setOnClickListener {
+                if (prediction.location != null) {
+                    onItemClick(prediction)
+                } else {
+                    Toast.makeText(binding.root.context, "Lokasi tidak valid", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 }

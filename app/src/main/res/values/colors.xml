@@ -55,4 +55,20 @@
     <color name="danger_700">#D31121</color>
     <color name="danger_900">#B7000C</color>
 
+    // Text Color
+    <color name="text_primary">#333</color>
+    <color name="text_secondary">#7D7D7D</color>
+    <color name="text_tetriary">#B4B4B4</color>
+    <color name="text_invert">#F2F2F2</color>
+    <color name="text_brand_color">#1A3550</color>
+    <color name="text_neutral_white">#FFFFFF</color>
+    <color name="text_disable">#BDBDBD</color>
+    <color name="text_danger">#E9342D</color>
+    <color name="text_brand_color_dark">#122639</color>
+
+    <color name="grey">#E0E0E0</color>
+
+    <color name="polygon_fill_color">#40FFC9CE</color>
+    <color name="polygon_stroke_color">#FFFF0000</color>
+
 </resources>
