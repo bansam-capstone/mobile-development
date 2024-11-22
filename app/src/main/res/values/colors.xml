@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="white_25">#40FFFFFF</color>
+
+    <color name="shimmerColor">#E3E3E3</color>
+
+    // Dark Blue Colors
+    <color name="dark_blue_50">#E8EBEE</color>
+    <color name="dark_blue_100">#B8C0C9</color>
+    <color name="dark_blue_200">#96A2AF</color>
+    <color name="dark_blue_300">#66788A</color>
+    <color name="dark_blue_400">#485D73</color>
+    <color name="dark_blue_500">#1A3550</color>
+    <color name="dark_blue_600">#183049</color>
+    <color name="dark_blue_700">#122639</color>
+    <color name="dark_blue_800">#0E1D2C</color>
+    <color name="dark_blue_900">#0B1622</color>
+
+    // Blue Colors
+    <color name="blue_50">#EFF5FC</color>
+    <color name="blue_100">#CCE0F5</color>
+    <color name="blue_200">#B4D1F1</color>
+    <color name="blue_300">#91BBEA</color>
+    <color name="blue_400">#7CAEE6</color>
+    <color name="blue_500">#5B9AE0</color>
+    <color name="blue_600">#538CCC</color>
+    <color name="blue_700">#416D9F</color>
+    <color name="blue_800">#32557B</color>
+    <color name="blue_900">#26415E</color>
+
+    // success Colors
+    <color name="success_50">#DFF8EC</color>
+    <color name="success_100">#B2ECD0</color>
+    <color name="success_300">#15D293</color>
+    <color name="success_500">#00BC65</color>
+    <color name="success_700">#00994D</color>
+    <color name="success_900">#00672B</color>
+
+    // Warning Colors
+    <color name="warning_50">#FDF8E1</color>
+    <color name="warning_100">#FBEBB4</color>
+    <color name="warning_300">#F7D352</color>
+    <color name="warning_500">#F5BF17</color>
+    <color name="warning_700">#F59F0B</color>
+    <color name="warning_900">#F47103</color>
+
+    // Danger Colors
+    <color name="danger_50">#FFEAED</color>
+    <color name="danger_100">#FFC9CE</color>
+    <color name="danger_300">#E6696A</color>
+    <color name="danger_500">#E9342D</color>
+    <color name="danger_700">#D31121</color>
+    <color name="danger_900">#B7000C</color>
+
+    // Text Color
+    <color name="text_primary">#333</color>
+    <color name="text_secondary">#7D7D7D</color>
+    <color name="text_tetriary">#B4B4B4</color>
+    <color name="text_invert">#F2F2F2</color>
+    <color name="text_brand_color">#1A3550</color>
+    <color name="text_neutral_white">#FFFFFF</color>
+    <color name="text_disable">#BDBDBD</color>
+    <color name="text_danger">#E9342D</color>
+    <color name="text_brand_color_dark">#122639</color>
+
+    <color name="grey">#E0E0E0</color>
+
+    <color name="polygon_fill_color">#40FFC9CE</color>
+    <color name="polygon_stroke_color">#FFFF0000</color>
+
+</resources>

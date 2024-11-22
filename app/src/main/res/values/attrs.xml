@@ -1,0 +1,10 @@
+<resources>
+    <attr name="colorWarning" format="color" />
+    <attr name="colorOnWarning" format="color" />
+    <attr name="colorWarningContainer" format="color" />
+    <attr name="colorOnWarningContainer" format="color" />
+    <attr name="colorSafe" format="color" />
+    <attr name="colorOnSafe" format="color" />
+    <attr name="colorSafeContainer" format="color" />
+    <attr name="colorOnSafeContainer" format="color" />
+</resources>
