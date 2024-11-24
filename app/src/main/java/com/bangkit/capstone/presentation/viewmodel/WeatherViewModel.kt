@@ -23,7 +23,6 @@ class WeatherViewModel @Inject constructor(
     private val _weather = MutableLiveData<List<WeatherResponse>>()
     val weather: LiveData<List<WeatherResponse>> = _weather
 
-
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 

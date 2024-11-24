@@ -7,4 +7,6 @@ interface WeatherRepository {
     suspend fun getWeather(): WeatherResponse
 
     suspend fun getWeatherByLocation(location: String): LocationResponse
+
+    suspend fun getWeatherTommorowByLocation(location: String): LocationResponse
 }

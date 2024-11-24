@@ -6,7 +6,9 @@ import android.view.Menu
 import android.view.MenuItem
 import com.bangkit.capstone.R
 import com.bangkit.capstone.databinding.ActivityAboutBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AboutActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAboutBinding
 
