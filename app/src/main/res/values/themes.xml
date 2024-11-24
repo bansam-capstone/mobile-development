@@ -3,8 +3,9 @@
     <style name="Base.Theme.Capstone" parent="Theme.Material3.DayNight">
 
         <item name="colorOnPrimary">@color/black</item>
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/grey</item>
         <item name="titleTextColor">@color/black</item>
+        <item name="color">@color/dark_blue_500</item>
         <item name="background">@color/white</item>
 
         <item name="backgroundColor">@color/dark_blue_200</item>

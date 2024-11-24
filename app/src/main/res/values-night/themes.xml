@@ -5,6 +5,7 @@
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorPrimary">@color/dark_blue_700</item>
         <item name="titleTextColor">@color/white</item>
+        <item name="color">@color/white</item>
         <item name="background">@color/dark_blue_700</item>
 
         <item name="textAppearanceBody1">@color/white</item>

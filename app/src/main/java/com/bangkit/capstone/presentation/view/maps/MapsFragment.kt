@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
@@ -33,9 +34,12 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.*
+//import com.google.maps.android.data.geojson.GeoJsonLayer
+//import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.tabs.TabLayout
 import com.google.maps.android.data.geojson.GeoJsonLayer
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
@@ -114,7 +118,6 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         binding.mapView.getMapAsync(this)
 
         setupSearchViewNavigation()
-        observeWeatherViewModel()
     }
 
     @SuppressLint("PotentialBehaviorOverride")
@@ -132,8 +135,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             val identifier = marker.title
             if (identifier != null) {
                 currentMarkerPosition = marker.position
-                showLoadingBottomSheet()
-
+                showBottomSheetDialog()
                 mapsViewModel.getWeatherByIdentifier(identifier)
             } else {
                 Toast.makeText(requireContext(), "Lokasi yang dipilih!", Toast.LENGTH_SHORT).show()
@@ -170,7 +172,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             )
 
             currentMarkerPosition = selectedLocation
-            showLoadingBottomSheet()
+            showBottomSheetDialog()
             mapsViewModel.getWeatherByIdentifier(identifier!!)
         } else {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(initialLocation))
@@ -194,17 +196,37 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-    private fun observeWeatherViewModel() {
+    private fun observeTodayWeather(
+        statusIcon: ImageView,
+        tvFloodStatus: TextView,
+        tvWindSpeed: TextView,
+        tvHumidity: TextView,
+        tvPressure: TextView,
+        tvLocation: TextView,
+        tvLocationDescription: TextView
+    ) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 mapsViewModel.weatherData.collectLatest { resource ->
                     when (resource) {
-                        is Resource.Loading -> {}
+                        is Resource.Loading -> {
+                            showLoadingContent()
+                        }
                         is Resource.Success -> {
                             val weatherResponse = resource.data
                             val address = getAddressFromLatLng(currentMarkerPosition)
                             if (address != null && weatherResponse != null && weatherResponse.isNotEmpty()) {
-                                updateBottomSheet(address, weatherResponse[0])
+                                updateBottomSheet(
+                                    address = address,
+                                    weather = weatherResponse[0],
+                                    statusIcon = statusIcon,
+                                    tvFloodStatus = tvFloodStatus,
+                                    tvWindSpeed = tvWindSpeed,
+                                    tvHumidity = tvHumidity,
+                                    tvPressure = tvPressure,
+                                    tvLocation = tvLocation,
+                                    tvLocationDescription = tvLocationDescription
+                                )
                                 moveCameraToPosition(currentMarkerPosition)
                             } else {
                                 Toast.makeText(
@@ -229,54 +251,147 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-    private fun showLoadingBottomSheet() {
+    private fun showLoadingContent(sheetView: View) {
+        sheetView.findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
+        sheetView.findViewById<TextView>(R.id.tvLocation).visibility = View.GONE
+        sheetView.findViewById<TextView>(R.id.tvLocationDescription).visibility = View.GONE
+        sheetView.findViewById<TextView>(R.id.tvWindSpeed).visibility = View.GONE
+        sheetView.findViewById<TextView>(R.id.tvHumidity).visibility = View.GONE
+        sheetView.findViewById<TextView>(R.id.tvPressure).visibility = View.GONE
+        sheetView.findViewById<ImageView>(R.id.statusIcon).visibility = View.GONE
+        sheetView.findViewById<TextView>(R.id.tvFloodStatus).visibility = View.GONE
+    }
+
+    private fun showLoadingContent() {
+        bottomSheetDialog?.findViewById<ProgressBar>(R.id.progressBar)?.visibility = View.VISIBLE
+        bottomSheetDialog?.findViewById<TextView>(R.id.tvLocation)?.visibility = View.GONE
+        bottomSheetDialog?.findViewById<TextView>(R.id.tvLocationDescription)?.visibility = View.GONE
+        bottomSheetDialog?.findViewById<TextView>(R.id.tvWindSpeed)?.visibility = View.GONE
+        bottomSheetDialog?.findViewById<TextView>(R.id.tvHumidity)?.visibility = View.GONE
+        bottomSheetDialog?.findViewById<TextView>(R.id.tvPressure)?.visibility = View.GONE
+        bottomSheetDialog?.findViewById<ImageView>(R.id.statusIcon)?.visibility = View.GONE
+        bottomSheetDialog?.findViewById<TextView>(R.id.tvFloodStatus)?.visibility = View.GONE
+    }
+
+    private fun showBottomSheetDialog() {
         bottomSheetDialog?.dismiss()
 
         bottomSheetDialog = BottomSheetDialog(requireContext())
         val sheetView = layoutInflater.inflate(R.layout.bottom_sheet_layout, null)
         bottomSheetDialog?.setContentView(sheetView)
-        with(sheetView) {
-            findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
-            findViewById<TextView>(R.id.tvLocation).visibility = View.GONE
-            findViewById<TextView>(R.id.tvLocationDescription).visibility = View.GONE
-            findViewById<TextView>(R.id.tvWindSpeed).visibility = View.GONE
-            findViewById<TextView>(R.id.tvHumidity).visibility = View.GONE
-            findViewById<TextView>(R.id.tvPressure).visibility = View.GONE
-            findViewById<ImageView>(R.id.statusIcon).visibility = View.GONE
-            findViewById<TextView>(R.id.tvFloodStatus).visibility = View.GONE
-        }
+
+        val tabLayout = sheetView.findViewById<TabLayout>(R.id.tabLayout)
+        val statusIcon = sheetView.findViewById<ImageView>(R.id.statusIcon)
+        val tvFloodStatus = sheetView.findViewById<TextView>(R.id.tvFloodStatus)
+        val tvWindSpeed = sheetView.findViewById<TextView>(R.id.tvWindSpeed)
+        val tvHumidity = sheetView.findViewById<TextView>(R.id.tvHumidity)
+        val tvPressure = sheetView.findViewById<TextView>(R.id.tvPressure)
+        val tvLocation = sheetView.findViewById<TextView>(R.id.tvLocation)
+        val tvLocationDescription = sheetView.findViewById<TextView>(R.id.tvLocationDescription)
+
+        showLoadingContent(sheetView)
+
+        setupTabLayout(tabLayout)
+
+        val defaultTab = tabLayout.getTabAt(0)
+        defaultTab?.select()
+        defaultTab?.view?.setBackgroundResource(R.drawable.bg_tab_active)
+
+        observeTodayWeather(
+            statusIcon = statusIcon,
+            tvFloodStatus = tvFloodStatus,
+            tvWindSpeed = tvWindSpeed,
+            tvHumidity = tvHumidity,
+            tvPressure = tvPressure,
+            tvLocation = tvLocation,
+            tvLocationDescription = tvLocationDescription
+        )
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.view?.setBackgroundResource(R.drawable.bg_tab_active)
+                when (tab?.position) {
+                    0 -> {
+                        observeTodayWeather(
+                            statusIcon = statusIcon,
+                            tvFloodStatus = tvFloodStatus,
+                            tvWindSpeed = tvWindSpeed,
+                            tvHumidity = tvHumidity,
+                            tvPressure = tvPressure,
+                            tvLocation = tvLocation,
+                            tvLocationDescription = tvLocationDescription
+                        )
+                    }
+                    1 -> {}
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                tab?.view?.setBackgroundResource(0)
+            }
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+        })
 
         bottomSheetDialog?.show()
     }
 
-    @SuppressLint("CutPasteId")
-    private fun updateBottomSheet(address: Address, weather: LocationResponse) {
-        bottomSheetDialog?.let { dialog ->
-            val sheetView = dialog.findViewById<LinearLayout>(R.id.bottomSheetLayout)
-            sheetView?.let {
-                with(it) {
-                    findViewById<ProgressBar>(R.id.progressBar).visibility = View.GONE
-                    findViewById<TextView>(R.id.tvLocation).visibility = View.VISIBLE
-                    findViewById<TextView>(R.id.tvLocationDescription).visibility = View.VISIBLE
-                    findViewById<TextView>(R.id.tvWindSpeed).visibility = View.VISIBLE
-                    findViewById<TextView>(R.id.tvHumidity).visibility = View.VISIBLE
-                    findViewById<TextView>(R.id.tvPressure).visibility = View.VISIBLE
-                    findViewById<ImageView>(R.id.statusIcon).visibility = View.VISIBLE
-                    findViewById<TextView>(R.id.tvFloodStatus).visibility = View.VISIBLE
+    private fun setupTabLayout(tabLayout: TabLayout) {
+        tabLayout.removeAllTabs()
 
-                    val streetName = address.thoroughfare ?: address.getAddressLine(0) ?: "Nama Jalan Tidak Tersedia"
-                    val city = address.locality ?: "Kota Tidak Tersedia"
+        val tabTitles = listOf("Hari Ini", "Besok")
+        tabTitles.forEach { title ->
+            val tab = tabLayout.newTab().setText(title)
+            tabLayout.addTab(tab)
+        }
 
-                    findViewById<TextView>(R.id.tvLocation).text = streetName
-                    findViewById<TextView>(R.id.tvLocationDescription).text = city
-
-                    findViewById<TextView>(R.id.tvWindSpeed).text = weather.windSpeed?.let { "${it} m/s" } ?: "N/A"
-                    findViewById<TextView>(R.id.tvHumidity).text = weather.humidity?.let { "${it}%" } ?: "N/A"
-                    findViewById<TextView>(R.id.tvPressure).text = weather.pressure?.let { "${it} hPa" } ?: "N/A"
-
-                    weather.riskLevel?.let { updateRiskLevelIcon(it, findViewById(R.id.statusIcon), findViewById(R.id.tvFloodStatus)) }
-                }
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.view?.setBackgroundResource(R.drawable.bg_tab_active)
             }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                tab?.view?.setBackgroundResource(0)
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
+    }
+
+    @SuppressLint("CutPasteId")
+    private fun updateBottomSheet(
+        address: Address,
+        weather: LocationResponse,
+        statusIcon: ImageView,
+        tvFloodStatus: TextView,
+        tvWindSpeed: TextView,
+        tvHumidity: TextView,
+        tvPressure: TextView,
+        tvLocation: TextView,
+        tvLocationDescription: TextView
+    ) {
+        bottomSheetDialog?.findViewById<ProgressBar>(R.id.progressBar)?.visibility = View.GONE
+
+        tvLocation.visibility = View.VISIBLE
+        tvLocationDescription.visibility = View.VISIBLE
+        tvWindSpeed.visibility = View.VISIBLE
+        tvHumidity.visibility = View.VISIBLE
+        tvPressure.visibility = View.VISIBLE
+        statusIcon.visibility = View.VISIBLE
+        tvFloodStatus.visibility = View.VISIBLE
+
+        val streetName = address.thoroughfare ?: address.getAddressLine(0) ?: "Nama Jalan Tidak Tersedia"
+        val city = address.locality ?: "Kota Tidak Diketahui"
+
+        tvLocation.text = streetName
+        tvLocationDescription.text = city
+
+        tvWindSpeed.text = weather.windSpeed?.let { "$it m/s" } ?: "N/A"
+        tvHumidity.text = weather.humidity?.let { "$it%" } ?: "N/A"
+        tvPressure.text = weather.pressure?.let { "$it hPa" } ?: "N/A"
+
+        weather.riskLevel?.let {
+            updateRiskLevelIcon(it, statusIcon, tvFloodStatus)
         }
     }
 

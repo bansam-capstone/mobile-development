@@ -100,6 +100,9 @@ dependencies {
     // Shimmer
     implementation("com.facebook.shimmer:shimmer:0.5.0")
 
+    // Work Manager
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+
 }
 
 kapt {

@@ -37,7 +37,8 @@
             android:textColor="?attr/colorOnPrimary"
             android:textSize="14sp" />
 
-        <Switch
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/sw_notification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
