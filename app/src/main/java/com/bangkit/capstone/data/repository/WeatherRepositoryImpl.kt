@@ -18,4 +18,8 @@ class WeatherRepositoryImpl @Inject constructor(
         return apiService.getWeatherByLocation(location)
     }
 
+    override suspend fun getWeatherTommorowByLocation(location: String): LocationResponse {
+        return apiService.getWeatherTommorowByLocation(location)
+    }
+
 }

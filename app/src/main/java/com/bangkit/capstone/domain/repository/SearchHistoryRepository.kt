@@ -8,4 +8,6 @@ interface SearchHistoryRepository {
 
     suspend fun getAllSearchHistory() : List<SearchHistoryEntity>
 
+    suspend fun deleteSearchHistory()
+
 }

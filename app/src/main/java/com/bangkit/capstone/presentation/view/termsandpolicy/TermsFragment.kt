@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bangkit.capstone.R
 import com.bangkit.capstone.databinding.FragmentTermsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TermsFragment : Fragment() {
     private var _binding: FragmentTermsBinding? = null
     private val binding get() = _binding!!

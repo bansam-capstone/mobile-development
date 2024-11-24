@@ -49,23 +49,23 @@ class PredictionActivity : AppCompatActivity() {
     )
 
     private val locations = listOf(
-        LocationInfo("Jl. Slamet Riyadi", LatLng(-0.5098581857545632, 117.1178542019155), "slamet-riyadi"),
-        LocationInfo("Jl. Pangeran Antasari", LatLng(-0.49186601488572806, 117.12722378180521), "antasari"),
-        LocationInfo("Jl. Simpang Agus Salim", LatLng(-0.4957041096360274, 117.14971318603816), "simpang-agus-salim"),
-        LocationInfo("Jl. M. Yamin", LatLng(-0.4754107332727611, 117.14615018774853), "simpang-lembuswana"),
-        LocationInfo("Jl. Mugirejo", LatLng(-0.4687086559524597, 117.19277093628588), "mugirejo"),
-        LocationInfo("Jl. Kapten Soedjono", LatLng(-0.5259576904539937, 117.16653946879711), "kapten-sudjono"),
-        LocationInfo("Jl. Brigjend Katamso No.207-71", LatLng(-0.4821629316468126, 117.16130648629576), "brigjend-katamso"),
-        LocationInfo("Jl. Gatot Subroto 71-75,Bandara", LatLng(-0.484634868556901, 117.15525241253552), "gatot-subroto"),
-        LocationInfo("Jl. Cendana", LatLng(-0.500252081801295, 117.11931456511012), "cendana"),
-        LocationInfo("Jl. D.I. Panjaitan", LatLng(-0.4616283811244264, 117.18572338299191), "di-panjaitan"),
-        LocationInfo("Jl. Damanhuri", LatLng(-0.4726480049586589, 117.18089748709794), "damanhuri"),
-        LocationInfo("Pertigaan Pramuka Perjuangan", LatLng(-0.4648328326253432, 117.15584721398068), "pertigaan-pramuka-perjuangan"),
-        LocationInfo("Jl. Padat Karya 33,Sempaja Utara", LatLng(-0.424829289116985, 117.15882745064134), "padat-karya-sempaja-simpang-wanyi"),
-        LocationInfo("Simpang Sempaja", LatLng(-0.4500742226015745, 117.15303878168255), "simpang-sempaja"),
-        LocationInfo("Simpang Juanda Fly Over", LatLng(-0.472740909178976, 117.13824418741677), "ir-h-juanda"),
-        LocationInfo("Jl. Tengkawang", LatLng(-0.5016990420031888, 117.11437249596959), "tengkawang"),
-        LocationInfo("Jl. Sukorejo", LatLng(-0.4317621005498969, 117.19535493819562), "sukorejo")
+        LocationInfo("slamet-riyadi", LatLng(-0.5098581857545632, 117.1178542019155), "slamet-riyadi", null),
+        LocationInfo("antasari", LatLng(-0.49186601488572806, 117.12722378180521), "antasari", "https://diskominfo.samarindakota.go.id/api/cctv/simpang-antasari-siradj-salman"),
+        LocationInfo("simpang-agus-salim", LatLng(-0.4957041096360274, 117.14971318603816), "simpang-agus-salim", "https://diskominfo.samarindakota.go.id/api/cctv/simpang-4-agus-salim"),
+        LocationInfo("simpang-lembuswana", LatLng(-0.4754107332727611, 117.14615018774853), "simpang-lembuswana", "https://diskominfo.samarindakota.go.id/api/cctv/simpang-lembuswana-m-yamin"),
+        LocationInfo("mugirejo", LatLng(-0.4687086559524597, 117.19277093628588), "mugirejo", "https://diskominfo.samarindakota.go.id/api/cctv/simpang-mugirejo"),
+        LocationInfo("kapten-sudjono", LatLng(-0.5259576904539937, 117.16653946879711), "kapten-sudjono", null),
+        LocationInfo("brigjend-katamso", LatLng(-0.4821629316468126, 117.16130648629576), "brigjend-katamso", null),
+        LocationInfo("gatot-subroto", LatLng(-0.484634868556901, 117.15525241253552), "gatot-subroto", null),
+        LocationInfo("cendana", LatLng(-0.500252081801295, 117.11931456511012), "cendana", null),
+        LocationInfo("di-panjaitan", LatLng(-0.4616283811244264, 117.18572338299191), "di-panjaitan", null),
+        LocationInfo("damanhuri", LatLng(-0.4726480049586589, 117.18089748709794), "damanhuri", null),
+        LocationInfo("pertigaan-pramuka-perjuangan", LatLng(-0.4648328326253432, 117.15584721398068), "pertigaan-pramuka-perjuangan", "https://diskominfo.samarindakota.go.id/api/cctv/tps-jalan-pramuka"),
+        LocationInfo("padat-karya-sempaja-simpang-wanyi", LatLng(-0.424829289116985, 117.15882745064134), "padat-karya-sempaja-simpang-wanyi", null),
+        LocationInfo("simpang-sempaja", LatLng(-0.4500742226015745, 117.15303878168255), "simpang-sempaja", "https://diskominfo.samarindakota.go.id/api/cctv/simpang-sempaja"),
+        LocationInfo("ir-h-juanda", LatLng(-0.472740909178976, 117.13824418741677), "ir-h-juanda", "https://diskominfo.samarindakota.go.id/api/cctv/fly-over-sisi-juanda"),
+        LocationInfo("tengkawang", LatLng(-0.5016990420031888, 117.11437249596959), "tengkawang", null),
+        LocationInfo("sukorejo", LatLng(-0.4317621005498969, 117.19535493819562), "sukorejo", null),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,8 +109,8 @@ class PredictionActivity : AppCompatActivity() {
                     bundle.putDouble("longitude", selectedLocation.latLng.longitude)
                     bundle.putString("identifier", selectedLocation.identifier)
 
-                    putExtra("latitude", selectedLocation.latLng.latitude.toDouble())
-                    putExtra("longitude", selectedLocation.latLng.longitude.toDouble())
+                    putExtra("latitude", selectedLocation.latLng.latitude)
+                    putExtra("longitude", selectedLocation.latLng.longitude)
                     putExtra("identifier", selectedLocation.identifier)
                 }
                 startActivity(intent)

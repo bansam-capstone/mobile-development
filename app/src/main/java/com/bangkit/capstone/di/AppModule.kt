@@ -31,7 +31,7 @@ object AppModule {
         return Room.databaseBuilder(
             application,
             SearchHistoryDatabase::class.java,
-            "capstone_database"
+            "search_history_db"
         ).fallbackToDestructiveMigration()
             .build()
     }

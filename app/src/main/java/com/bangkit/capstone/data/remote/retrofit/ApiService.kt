@@ -12,4 +12,7 @@ interface ApiService {
     @GET("{location}")
     suspend fun getWeatherByLocation(@Path("location") location: String): LocationResponse
 
+    @GET("tomorrow/{location}")
+    suspend fun getWeatherTommorowByLocation(@Path("location") location: String): LocationResponse
+
 }

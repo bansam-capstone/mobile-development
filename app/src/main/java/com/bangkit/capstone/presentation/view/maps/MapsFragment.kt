@@ -1,19 +1,17 @@
 package com.bangkit.capstone.presentation.view.maps
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.Resources
 import android.location.Address
 import android.location.Geocoder
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.ProgressBar
-import android.widget.TableLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -34,8 +32,6 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.*
-//import com.google.maps.android.data.geojson.GeoJsonLayer
-//import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayout
 import com.google.maps.android.data.geojson.GeoJsonLayer
@@ -69,23 +65,23 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     private var bottomSheetDialog: BottomSheetDialog? = null
 
     private val locations = listOf(
-        LocationInfo("slamet-riyadi", LatLng(-0.5098581857545632, 117.1178542019155), "slamet-riyadi"),
-        LocationInfo("antasari", LatLng(-0.49186601488572806, 117.12722378180521), "antasari"),
-        LocationInfo("simpang-agus-salim", LatLng(-0.4957041096360274, 117.14971318603816), "simpang-agus-salim"),
-        LocationInfo("simpang-lembuswana", LatLng(-0.4754107332727611, 117.14615018774853), "simpang-lembuswana"),
-        LocationInfo("mugirejo", LatLng(-0.4687086559524597, 117.19277093628588), "mugirejo"),
-        LocationInfo("kapten-sudjono", LatLng(-0.5259576904539937, 117.16653946879711), "kapten-sudjono"),
-        LocationInfo("brigjend-katamso", LatLng(-0.4821629316468126, 117.16130648629576), "brigjend-katamso"),
-        LocationInfo("gatot-subroto", LatLng(-0.484634868556901, 117.15525241253552), "gatot-subroto"),
-        LocationInfo("cendana", LatLng(-0.500252081801295, 117.11931456511012), "cendana"),
-        LocationInfo("di-panjaitan", LatLng(-0.4616283811244264, 117.18572338299191), "di-panjaitan"),
-        LocationInfo("damanhuri", LatLng(-0.4726480049586589, 117.18089748709794), "damanhuri"),
-        LocationInfo("pertigaan-pramuka-perjuangan", LatLng(-0.4648328326253432, 117.15584721398068), "pertigaan-pramuka-perjuangan"),
-        LocationInfo("padat-karya-sempaja-simpang-wanyi", LatLng(-0.424829289116985, 117.15882745064134), "padat-karya-sempaja-simpang-wanyi"),
-        LocationInfo("simpang-sempaja", LatLng(-0.4500742226015745, 117.15303878168255), "simpang-sempaja"),
-        LocationInfo("ir-h-juanda", LatLng(-0.472740909178976, 117.13824418741677), "ir-h-juanda"),
-        LocationInfo("tengkawang", LatLng(-0.5016990420031888, 117.11437249596959), "tengkawang"),
-        LocationInfo("sukorejo", LatLng(-0.4317621005498969, 117.19535493819562), "sukorejo")
+        LocationInfo("slamet-riyadi", LatLng(-0.5098581857545632, 117.1178542019155), "slamet-riyadi", null),
+        LocationInfo("antasari", LatLng(-0.49186601488572806, 117.12722378180521), "antasari", "https://diskominfo.samarindakota.go.id/api/cctv/simpang-antasari-siradj-salman"),
+        LocationInfo("simpang-agus-salim", LatLng(-0.4957041096360274, 117.14971318603816), "simpang-agus-salim", "https://diskominfo.samarindakota.go.id/api/cctv/simpang-4-agus-salim"),
+        LocationInfo("simpang-lembuswana", LatLng(-0.4754107332727611, 117.14615018774853), "simpang-lembuswana", "https://diskominfo.samarindakota.go.id/api/cctv/simpang-lembuswana-m-yamin"),
+        LocationInfo("mugirejo", LatLng(-0.4687086559524597, 117.19277093628588), "mugirejo", "https://diskominfo.samarindakota.go.id/api/cctv/simpang-mugirejo"),
+        LocationInfo("kapten-sudjono", LatLng(-0.5259576904539937, 117.16653946879711), "kapten-sudjono", null),
+        LocationInfo("brigjend-katamso", LatLng(-0.4821629316468126, 117.16130648629576), "brigjend-katamso", null),
+        LocationInfo("gatot-subroto", LatLng(-0.484634868556901, 117.15525241253552), "gatot-subroto", null),
+        LocationInfo("cendana", LatLng(-0.500252081801295, 117.11931456511012), "cendana", null),
+        LocationInfo("di-panjaitan", LatLng(-0.4616283811244264, 117.18572338299191), "di-panjaitan", null),
+        LocationInfo("damanhuri", LatLng(-0.4726480049586589, 117.18089748709794), "damanhuri", null),
+        LocationInfo("pertigaan-pramuka-perjuangan", LatLng(-0.4648328326253432, 117.15584721398068), "pertigaan-pramuka-perjuangan", "https://diskominfo.samarindakota.go.id/api/cctv/tps-jalan-pramuka"),
+        LocationInfo("padat-karya-sempaja-simpang-wanyi", LatLng(-0.424829289116985, 117.15882745064134), "padat-karya-sempaja-simpang-wanyi", null),
+        LocationInfo("simpang-sempaja", LatLng(-0.4500742226015745, 117.15303878168255), "simpang-sempaja", "https://diskominfo.samarindakota.go.id/api/cctv/simpang-sempaja"),
+        LocationInfo("ir-h-juanda", LatLng(-0.472740909178976, 117.13824418741677), "ir-h-juanda", "https://diskominfo.samarindakota.go.id/api/cctv/fly-over-sisi-juanda"),
+        LocationInfo("tengkawang", LatLng(-0.5016990420031888, 117.11437249596959), "tengkawang", null),
+        LocationInfo("sukorejo", LatLng(-0.4317621005498969, 117.19535493819562), "sukorejo", null),
     )
 
     override fun onCreateView(
@@ -132,11 +128,13 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 //        loadGeoJsonLayer()
 
         mMap.setOnMarkerClickListener { marker ->
-            val identifier = marker.title
-            if (identifier != null) {
+            val selectedIdentifier  = marker.title
+            if (selectedIdentifier  != null) {
                 currentMarkerPosition = marker.position
+                identifier = selectedIdentifier
                 showBottomSheetDialog()
-                mapsViewModel.getWeatherByIdentifier(identifier)
+                mapsViewModel.getWeatherTodayByIdentifier(selectedIdentifier )
+                mapsViewModel.getWeatherTommorowByIdentifier(selectedIdentifier )
             } else {
                 Toast.makeText(requireContext(), "Lokasi yang dipilih!", Toast.LENGTH_SHORT).show()
             }
@@ -173,7 +171,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
             currentMarkerPosition = selectedLocation
             showBottomSheetDialog()
-            mapsViewModel.getWeatherByIdentifier(identifier!!)
+            mapsViewModel.getWeatherTodayByIdentifier(identifier!!)
+            mapsViewModel.getWeatherTommorowByIdentifier(identifier!!)
         } else {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(initialLocation))
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(initialLocation, 13f))
@@ -196,6 +195,62 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
+    private fun observeTommorowWeather(
+        statusIcon: ImageView,
+        tvFloodStatus: TextView,
+        tvWindSpeed: TextView,
+        tvHumidity: TextView,
+        tvPressure: TextView,
+        tvLocation: TextView,
+        tvLocationDescription: TextView
+    ) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                mapsViewModel.weatherTommorowData.collectLatest { resource ->
+                    when (resource) {
+                        is Resource.Loading -> {
+                            showLoadingContent()
+                        }
+                        is Resource.Success -> {
+                            val weatherResponse = resource.data
+                            val address = getAddressFromLatLng(currentMarkerPosition)
+                            if (address != null && weatherResponse != null && weatherResponse.isNotEmpty()) {
+                                updateBottomSheet(
+                                    address = address,
+                                    weather = weatherResponse[0],
+                                    statusIcon = statusIcon,
+                                    tvFloodStatus = tvFloodStatus,
+                                    tvWindSpeed = tvWindSpeed,
+                                    tvHumidity = tvHumidity,
+                                    tvPressure = tvPressure,
+                                    tvLocation = tvLocation,
+                                    tvLocationDescription = tvLocationDescription
+                                )
+                                moveCameraToPosition(currentMarkerPosition)
+                            } else {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Gagal mengambil data dari koordinat.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                dismissBottomSheet()
+                            }
+                        }
+                        is Resource.Error -> {
+                            Toast.makeText(
+                                requireContext(),
+                                resource.message ?: "Terjadi kesalahan saat mengambil data cuaca.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            dismissBottomSheet()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
     private fun observeTodayWeather(
         statusIcon: ImageView,
         tvFloodStatus: TextView,
@@ -207,7 +262,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     ) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                mapsViewModel.weatherData.collectLatest { resource ->
+                mapsViewModel.weatherTodayData.collectLatest { resource ->
                     when (resource) {
                         is Resource.Loading -> {
                             showLoadingContent()
@@ -288,6 +343,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         val tvPressure = sheetView.findViewById<TextView>(R.id.tvPressure)
         val tvLocation = sheetView.findViewById<TextView>(R.id.tvLocation)
         val tvLocationDescription = sheetView.findViewById<TextView>(R.id.tvLocationDescription)
+        val btnViewCCTV = sheetView.findViewById<View>(R.id.btnViewCCTV)
 
         showLoadingContent(sheetView)
 
@@ -322,7 +378,17 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             tvLocationDescription = tvLocationDescription
                         )
                     }
-                    1 -> {}
+                    1 -> {
+                        observeTommorowWeather(
+                            statusIcon = statusIcon,
+                            tvFloodStatus = tvFloodStatus,
+                            tvWindSpeed = tvWindSpeed,
+                            tvHumidity = tvHumidity,
+                            tvPressure = tvPressure,
+                            tvLocation = tvLocation,
+                            tvLocationDescription = tvLocationDescription
+                        )
+                    }
                 }
             }
 
@@ -334,6 +400,21 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         })
 
         bottomSheetDialog?.show()
+
+        val location = locations.find { it.identifier == identifier }
+        if (location?.cctvLink != null) {
+            btnViewCCTV?.isEnabled = true
+            btnViewCCTV?.alpha = 1f
+            btnViewCCTV?.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(location.cctvLink))
+                startActivity(intent)
+            }
+        } else {
+            btnViewCCTV?.isEnabled = false
+            btnViewCCTV?.alpha = 0.5f
+            btnViewCCTV?.setOnClickListener(null)
+        }
+
     }
 
     private fun setupTabLayout(tabLayout: TabLayout) {
@@ -470,10 +551,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                     null
                 }
             } catch (e: IOException) {
-                Log.e("MapsFragment", "Geocoder IO Exception: ${e.localizedMessage}")
                 null
             } catch (e: IllegalArgumentException) {
-                Log.e("MapsFragment", "Geocoder Illegal Argument: ${e.localizedMessage}")
                 null
             }
         }

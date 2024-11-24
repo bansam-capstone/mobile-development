@@ -35,4 +35,10 @@ class SearchHistoryRepositoryImpl @Inject constructor(
             searchHistoryDao.getAllSearchHistory()
         }
     }
+
+    override suspend fun deleteSearchHistory() {
+        withContext(Dispatchers.IO) {
+            searchHistoryDao.deleteAllSearchHistory()
+        }
+    }
 }

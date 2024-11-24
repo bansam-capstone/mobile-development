@@ -2,12 +2,9 @@ package com.bangkit.capstone.presentation.view.adapter
 
 import android.location.Address
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.capstone.R
-import com.bangkit.capstone.databinding.ItemListPredictionBinding
 import com.bangkit.capstone.databinding.ItemListSuggestionBinding
 
 class SuggestionsAdapter(
@@ -41,8 +38,8 @@ class SuggestionsAdapter(
         private val locationSubtitle: TextView = binding.locationSubtitle
 
         fun bind(address: Address) {
-            locationTitle.text = address.featureName ?: "Unknown Location"
-            locationSubtitle.text = address.getAddressLine(0)
+            locationTitle.text = address.thoroughfare ?: address.getAddressLine(0) ?: "Nama Jalan Tidak Tersedia"
+            locationSubtitle.text = address.countryName ?: address.locality ?: address.subLocality ?: "Tidak tersedia"
 
             binding.itemListSuggestion.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {

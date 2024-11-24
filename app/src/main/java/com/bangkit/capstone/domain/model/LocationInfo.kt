@@ -5,5 +5,6 @@ import com.google.android.gms.maps.model.LatLng
 data class LocationInfo(
     val name: String,
     val latLng: LatLng,
-    val identifier: String
+    val identifier: String,
+    val cctvLink: String?
 )

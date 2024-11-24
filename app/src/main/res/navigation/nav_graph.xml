@@ -32,5 +32,4 @@
             android:id="@+id/action_searchFragment_to_mapsFragment"
             app:destination="@id/mapsFragment" />
     </fragment>
-
 </navigation>

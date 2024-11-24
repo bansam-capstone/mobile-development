@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bangkit.capstone.R
 import com.bangkit.capstone.databinding.FragmentPolicyBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PolicyFragment : Fragment() {
     private var _binding: FragmentPolicyBinding? = null
     private val binding get() = _binding!!

@@ -7,7 +7,9 @@ import android.os.Handler
 import android.os.Looper
 import com.bangkit.capstone.R
 import com.bangkit.capstone.databinding.ActivitySplashBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
 
