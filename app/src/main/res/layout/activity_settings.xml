@@ -9,45 +9,6 @@
     android:background="?attr/background"
     tools:context=".presentation.view.settings.SettingsActivity">
 
-    <!-- Notification Setting -->
-    <LinearLayout
-        android:id="@+id/ll_notification"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingVertical="12dp"
-        android:gravity="center_vertical"
-        android:clickable="true"
-        android:background="?android:attr/selectableItemBackground">
-
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="center_vertical"
-            android:contentDescription="Notification Icon"
-            android:src="@drawable/ic_notification" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:paddingLeft="12dp"
-            android:text="Notifikasi"
-            android:textColor="?attr/colorOnPrimary"
-            android:textSize="14sp" />
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/sw_notification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:checked="true"
-            android:thumbTint="@color/blue_100"
-            android:trackTint="@color/blue_800"/>
-
-    </LinearLayout>
-
     <!-- About Setting -->
     <LinearLayout
         android:id="@+id/ll_about"
@@ -64,24 +25,24 @@
             android:layout_height="32dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_about"
-            android:contentDescription="About Icon"/>
+            android:contentDescription="@string/settings_about_icon"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Tentang"
-            android:paddingLeft="12dp"
+            android:text="@string/settings_title_about"
+            android:paddingStart="12dp"
             android:textSize="14sp"
-            android:textColor="?attr/colorOnPrimary"/>
+            android:textColor="?attr/colorOnPrimary" />
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_arrow_right"
-            android:contentDescription="Go to About"/>
+            android:src="@drawable/ic_arrow_right" />
+
     </LinearLayout>
 
     <!-- Terms of Use Setting -->
@@ -100,15 +61,15 @@
             android:layout_height="32dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_term_of_use"
-            android:contentDescription="Terms Icon" />
+            android:contentDescription="@string/settings_terms_icon" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Ketentuan Penggunaan"
-            android:paddingLeft="12dp"
+            android:text="@string/settings_title_terms"
+            android:paddingStart="12dp"
             android:textSize="14sp"
             android:textColor="?attr/colorOnPrimary"/>
 
@@ -116,8 +77,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_arrow_right"
-            android:contentDescription="Go to Terms of Use"/>
+            android:src="@drawable/ic_arrow_right" />
     </LinearLayout>
 
     <!-- Privacy Policy Setting -->
@@ -136,15 +96,15 @@
             android:layout_height="32dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_privacy_policy"
-            android:contentDescription="Privacy Icon" />
+            android:contentDescription="@string/settings_privacy_icon" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Kebijakan Privasi"
-            android:paddingLeft="12dp"
+            android:text="@string/settings_title_privacy_policy"
+            android:paddingStart="12dp"
             android:textSize="14sp"
             android:textColor="?attr/colorOnPrimary"/>
 
@@ -152,8 +112,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_arrow_right"
-            android:contentDescription="Go to Privacy Policy"/>
+            android:src="@drawable/ic_arrow_right" />
     </LinearLayout>
 
 </LinearLayout>

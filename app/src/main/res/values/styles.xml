@@ -2,11 +2,9 @@
 <resources>
     <style name="AppTheme" parent="Theme.Material3.DayNight">
 
-        <!-- Remove shadow and background from ActionBar -->
         <item name="windowActionBarOverlay">true</item>
         <item name="actionBarStyle">@style/TransparentActionBar</item>
 
-        <!-- Font -->
         <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
