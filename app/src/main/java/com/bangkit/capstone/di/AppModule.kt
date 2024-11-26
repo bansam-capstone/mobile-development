@@ -3,7 +3,9 @@ package com.bangkit.capstone.di
 import android.content.Context
 import androidx.room.Room
 import com.bangkit.capstone.data.local.room.SearchHistoryDao
-import com.bangkit.capstone.data.local.room.SearchHistoryDatabase
+import com.bangkit.capstone.data.local.room.Database
+import com.bangkit.capstone.data.local.room.LocationWeatherDao
+import com.bangkit.capstone.data.local.room.WeatherDao
 import com.bangkit.capstone.data.remote.retrofit.ApiConfig
 import com.bangkit.capstone.data.remote.retrofit.ApiService
 import com.bangkit.capstone.data.repository.SearchHistoryRepositoryImpl
@@ -22,25 +24,38 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    // Dari Database Room
+    // Provide Room Database
     @Provides
     @Singleton
-    fun provideSearchHistoryDatabase(
+    fun provideDatabase(
         @ApplicationContext application: Context
-    ): SearchHistoryDatabase {
+    ): Database {
         return Room.databaseBuilder(
             application,
-            SearchHistoryDatabase::class.java,
-            "search_history_db"
-        ).fallbackToDestructiveMigration()
-            .build()
+            Database::class.java,
+            "bansam_db"
+        ).build()
     }
 
     @Provides
     fun provideSearchHistoryDao(
-        database: SearchHistoryDatabase
+        database: Database
     ): SearchHistoryDao {
         return database.searchHistoryDao()
+    }
+
+    @Provides
+    fun provideWeatherDao(
+        database: Database
+    ): WeatherDao {
+        return database.weatherDao()
+    }
+
+    @Provides
+    fun provideLocationWeatherDao(
+        database: Database
+    ): LocationWeatherDao {
+        return database.locationWeatherDao()
     }
 
     @Provides
@@ -49,8 +64,18 @@ object AppModule {
         return SearchHistoryRepositoryImpl(searchHistoryDao)
     }
 
-    // Dari Retrofit
+    // Provide WeatherRepository implementation
+    @Provides
+    @Singleton
+    fun provideWeatherRepository(
+        apiService: ApiService,
+        weatherDao: WeatherDao,
+        locationWeatherDao: LocationWeatherDao
+    ): WeatherRepository {
+        return WeatherRepositoryImpl(apiService, weatherDao, locationWeatherDao)
+    }
 
+    // Provide Retrofit ApiService
     @Provides
     @Singleton
     fun provideApiConfig(): ApiConfig {
@@ -64,14 +89,7 @@ object AppModule {
     }
 
     @Provides
-    @Singleton
-    fun provideWeatherRepository(apiService: ApiService): WeatherRepository {
-        return WeatherRepositoryImpl(apiService)
-    }
-
-    @Provides
     fun provideGetWeatherUseCase(repository: WeatherRepository): GetWeatherUseCase {
         return GetWeatherUseCase(repository)
     }
-
 }

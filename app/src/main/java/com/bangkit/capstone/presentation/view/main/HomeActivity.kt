@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.bangkit.capstone.R
 import com.bangkit.capstone.common.Resource
@@ -40,6 +39,7 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
 
     private val initialLocation = LatLng(-0.502106, 117.153709)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -125,6 +125,8 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
                 binding.tvPressure.text = String.format("%d hPa", currentWeather.pressure?.toInt() ?: "--")
 
                 currentWeather.description?.let { updateWeatherIcon(it) }
+            } else {
+                Toast.makeText(this, "Data cuaca tidak ditemukan", Toast.LENGTH_SHORT).show()
             }
         }
     }
