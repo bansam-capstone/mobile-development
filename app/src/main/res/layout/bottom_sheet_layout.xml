@@ -21,7 +21,7 @@
         android:id="@+id/tvLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Jl. Pangeran Antasari"
+        android:text="@string/bsheet_title_address"
         android:textSize="20sp"
         android:fontFamily="@font/poppins_bold"
         android:textColor="?attr/colorOnPrimary" />
@@ -30,9 +30,9 @@
     <TextView
         android:id="@+id/tvLocationDescription"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="Kec. Samarinda Ulu, Kota Samarinda, Kalimantan Timur"
+        android:text="@string/bsheet_subtitle_address"
         android:textSize="14sp"
         android:textStyle="bold"
         android:textColor="?attr/colorOnPrimary"
@@ -82,7 +82,7 @@
                 android:id="@+id/tvFloodStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status Banjir: Aman"
+                android:text="@string/bsheet_prediction_title"
                 android:textSize="18sp"
                 android:fontFamily="@font/poppins_bold"
                 android:textColor="?attr/colorOnPrimary"
@@ -116,7 +116,7 @@
                     android:id="@+id/tvWindSpeed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1.54 m/s"
+                    android:text="@string/home_windspeed"
                     android:textSize="14sp"
                     android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/white"
@@ -126,7 +126,7 @@
                     android:id="@+id/tvWindSpeedTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kecepatan Angin"
+                    android:text="@string/home_title_windspeed"
                     android:textSize="12sp"
                     android:textColor="@color/white" />
 
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_bold"
                     android:gravity="center"
-                    android:text="90%"
+                    android:text="@string/home_humidity"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
 
@@ -160,7 +160,7 @@
                     android:id="@+id/tvHumidityTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kelembapan"
+                    android:text="@string/home_title_humidity"
                     android:textSize="12sp"
                     android:textColor="@color/white" />
 
@@ -184,7 +184,7 @@
                     android:id="@+id/tvPressure"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1010 hPa"
+                    android:text="@string/home_pressure"
                     android:textSize="14sp"
                     android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/white"
@@ -194,7 +194,7 @@
                     android:id="@+id/tvPressureTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tekanan"
+                    android:text="@string/home_title_pressure"
                     android:textSize="12sp"
                     android:textColor="@color/white" />
 
@@ -208,7 +208,7 @@
         android:id="@+id/btnViewCCTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lihat CCTV"
+        android:text="@string/bsheet_btn_cctv"
         android:fontFamily="@font/poppins_bold"
         android:backgroundTint="?attr/backgroundColor"
         android:gravity="center"

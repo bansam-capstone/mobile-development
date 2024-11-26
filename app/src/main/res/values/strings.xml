@@ -1,12 +1,10 @@
 <resources>
     <string name="app_name">BanSam</string>
     <string name="settings_title">Pengaturan</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_hint">Cari Lokasi</string>
     <string name="help_title">Bantuan</string>
 
-    // Mitigation
+    <!-- Mitigation -->
     <string name="mitigasi_banjir_title">Mitigasi Banjir</string>
 
     <!-- Subjudul -->
@@ -46,15 +44,16 @@
         <item>Bersihkan lumpur dan puing-puing dengan hati-hati, serta pastikan keselamatan selama proses pembersihan.</item>
     </string-array>
 
-    // About
+    <!-- About -->
     <string name="app_version">Versi 1.0</string>
     <string name="app_description">Bansam adalah aplikasi yang dirancang khusus untuk membantu masyarakat Kota Samarinda dalam menghadapi ancaman banjir. Kami menyediakan informasi terkini mengenai area rawan banjir, kondisi cuaca, dan prediksi banjir, serta memberi akses ke informasi penting saat terjadi bencana banjir.</string>
     <string name="mission_title">Misi Kami</string>
     <string name="mission_description">Menyediakan informasi banjir yang akurat dan cepat agar masyarakat dapat lebih siap dalam menghadapi situasi darurat, serta meningkatkan kesadaran akan pentingnya tindakan pencegahan.</string>
     <string name="features_title">Fitur Utama</string>
+    <string name="about_bansam_logo">Bansam Logo</string>
     <string name="features_list">• Peta Interaktif yang menyajikan data area banjir secara real-time.\n• Peringatan dini yang berupa notifikasi prediksi banjir untuk tindakan pencegahan banjir.</string>
 
-    // Help
+    <!-- Help -->
     <string name="faq_title">FAQ</string>
     <string-array name="faq_questions">
         <item>Apakah aplikasi BANSAM hanya bisa digunakan di Kota Samarinda?</item>
@@ -63,6 +62,7 @@
         <item>Apakah aplikasi ini akan mengirimkan peringatan jika ada kondisi darurat banjir?</item>
         <item>Apakah saya bisa menonaktifkan notifikasi jika tidak ingin menerima pemberitahuan?</item>
     </string-array>
+
     <string-array name="faq_answers">
         <item>Aplikasi BANSAM dirancang khusus untuk masyarakat Kota Samarinda, namun bisa digunakan di daerah lain dengan beberapa penyesuaian.</item>
         <item>Informasi yang disajikan oleh aplikasi ini bersifat real-time, termasuk prediksi banjir dan kondisi cuaca terkini.</item>
@@ -74,11 +74,12 @@
     <string name="title_terms">Ketentuan Pengguna</string>
     <string name="title_policy">Kebijakan Privasi</string>
 
-    // Privacy Policy
+    <!--Privacy Policy-->
     <string name="policy_title">Kebijakan Privasi</string>
     <string name="policy_subtitle">Terakhir diperbarui 1 November 2024</string>
     <string name="policy_description">Baca kebijakan privasi penggunaan aplikasi Bansam dengan saksama sebelum menyetujui atau menggunakan aplikasi Bansam.</string>
     <string name="policy_highlighted">Dengan menggunakan Bansam, Anda setuju untuk memenuhi kebijakan privasi ini.</string>
+
     <string-array name="policy_content">
         <item>1. Informasi yang Kami Kumpulkan\n\nDengan izin Anda, kami mungkin mengumpulkan data lokasi untuk memberikan informasi yang relevan mengenai kondisi banjir di sekitar Anda.</item>
         <item>2. Penggunaan Informasi\n\nMemberikan layanan yang sesuai dengan kebutuhan Anda, termasuk prediksi dan informasi tentang area rawan banjir, dan mengirimkan pemberitahuan dan peringatan dini terkait kondisi banjir, jika diperlukan.</item>
@@ -87,11 +88,15 @@
         <item>5. Perubahan Kebijakan Privasi\n\nKami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu. Setiap perubahan akan kami informasikan melalui aplikasi, dan perubahan tersebut akan berlaku segera setelah diterbitkan. Kami menyarankan Anda untuk memeriksa kebijakan ini secara berkala untuk memahami perubahan terbaru.</item>
     </string-array>
 
-    // Terms Of Use
+    <!--Terms Of Use-->
     <string name="terms_title">Ketentuan Pengguna</string>
     <string name="terms_subtitle">Terakhir diperbarui 1 November 2024</string>
     <string name="terms_description">Baca syarat dan ketentuan penggunaan aplikasi Bansam dengan saksama sebelum menyetujui atau menggunakan aplikasi Bansam.</string>
     <string name="terms_highlighted">Dengan menggunakan Bansam, Anda setuju untuk memenuhi syarat dan ketentuan ini.</string>
+    <string name="help_detail_question">Pertanyaan</string>
+    <string name="help_detail_answer">Jawaban</string>
+    <string name="help_faq">FAQ</string>
+
     <string-array name="terms_content">
         <item>1. Penggunaan Aplikasi\n\nAplikasi Bansam dibuat untuk membantu pengguna dalam mendapatkan informasi terkait area rawan banjir dan prediksi banjir di Kota Samarinda. Informasi yang tersedia hanya bertujuan sebagai panduan dan tidak menjamin keselamatan pengguna. Pengguna diharapkan untuk selalu berhati-hati dan mengikuti petunjuk dari otoritas setempat saat terjadi situasi darurat.</item>
         <item>2. Akurasi Informasi\n\nKami berusaha untuk menyediakan informasi yang akurat dan terkini. Namun, kami tidak bertanggung jawab atas ketepatan, kelengkapan, atau keterbaruan informasi yang ditampilkan dalam aplikasi. Bansam tidak bertanggung jawab atas kerugian atau dampak yang timbul akibat penggunaan informasi yang disediakan.</item>
@@ -100,5 +105,53 @@
         <item>5. Perubahan Ketentuan\n\nBansam berhak untuk mengubah atau memperbarui ketentuan penggunaan ini sewaktu-waktu. Perubahan akan diinformasikan melalui aplikasi, dan pengguna diharapkan untuk selalu memperhatikan ketentuan terbaru yang berlaku.</item>
         <item>6. Batasan Tanggung Jawab\n\nBansam tidak bertanggung jawab atas kerugian langsung maupun tidak langsung yang diakibatkan oleh penggunaan atau ketidakmampuan menggunakan aplikasi ini, termasuk namun tidak terbatas pada, kehilangan data atau kerusakan perangkat.</item>
     </string-array>
+
+    <!--home-->
+    <string name="home_city">Kota</string>
+    <string name="home_date">----</string>
+    <string name="home_temperature">--°C</string>
+    <string name="home_windspeed">-- m/s</string>
+    <string name="home_title_windspeed">Kecepatan Angin</string>
+    <string name="home_humidity">--%</string>
+    <string name="home_title_humidity">Kelembapan</string>
+    <string name="home_pressure">-- hPa</string>
+    <string name="home_title_pressure">Tekanan</string>
+    <string name="home_count_safe">0</string>
+    <string name="home_title_safe">Aman</string>
+    <string name="home_count_warning">0</string>
+    <string name="home_title_warning">Waspada</string>
+    <string name="home_danger_count">0</string>
+    <string name="home_title_danger">Bahaya</string>
+    <string name="home_title_prediction">Prediksi Banjir Terkini</string>
+    <string name="home_street_1">Jl. Slamet Riyadi</string>
+    <string name="home_title_unknown">Tidak Diketahui</string>
+    <string name="home_street_2">Jl. Pangeran Antasari</string>
+    <string name="home_btn_prediction">Lihat Titik Lokasi</string>
+    <string name="home_title_maps">Persebaran Titik Rawan Banjir</string>
+    <string name="home_description_maps">Lihat lokasi-lokasi di Kota Samarinda yang rawan terkena banjir.</string>
+    <string name="home_btn_detail">Lihat Detail</string>
+    <string name="home_title_mitigation">Tips Mitigasi Banjir</string>
+    <string name="home_description_mitigation">Dapatkan tips praktis untuk menghadapi banjir, mulai dari persiapan, tindakan saat banjir, hingga langkah pemulihan.</string>
+
+    <!--settings-->
+    <string name="settings_notification_icon">Notification Icon</string>
+    <string name="settings_title_notification">Notifikasi</string>
+    <string name="settings_about_icon">About Icon</string>
+    <string name="settings_title_about">Tentang</string>
+    <string name="settings_terms_icon">Terms Icon</string>
+    <string name="settings_title_terms">Ketentuan Penggunaan</string>
+    <string name="settings_privacy_icon">Privacy Icon</string>
+    <string name="settings_title_privacy_policy">Kebijakan Privasi</string>
+
+    <!--splash-->
+    <string name="splash_description">Selangkah Lebih Dekat dalam\nMengantisipasi Banjir</string>
+    <string name="splash_title">BANSAM</string>
+
+    <!--bottom sheet-->
+    <string name="bsheet_title_address">Jl. Pangeran Antasari</string>
+    <string name="bsheet_subtitle_address">Kec. Samarinda Ulu, Kota Samarinda, Kalimantan Timur</string>
+    <string name="bsheet_prediction_title">Status Banjir: Aman</string>
+    <string name="bsheet_btn_cctv">Lihat CCTV</string>
+
 
 </resources>

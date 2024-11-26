@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
         <ImageView
@@ -17,7 +17,7 @@
             android:layout_height="120dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_logo_bansam"
-            android:contentDescription="App Icon"/>
+            android:contentDescription="@string/about_bansam_logo" />
 
         <TextView
             android:layout_width="wrap_content"

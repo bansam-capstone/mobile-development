@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="BANSAM"
+        android:text="@string/splash_title"
         android:textColor="?attr/color"
         android:textSize="24sp"
         android:fontFamily="@font/poppins_bold"
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Selangkah Lebih Dekat dalam\nMengantisipasi Banjir"
+        android:text="@string/splash_description"
         android:textColor="?attr/color"
         android:textSize="16sp"
         android:gravity="center" />

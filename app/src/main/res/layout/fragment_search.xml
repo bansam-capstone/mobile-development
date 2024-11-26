@@ -8,7 +8,6 @@
     android:background="?attr/background"
     tools:context=".presentation.view.maps.SearchFragment">
 
-    <!-- Container untuk SearchView -->
     <LinearLayout
         android:id="@+id/searchContainer"
         android:layout_width="match_parent"
@@ -24,7 +23,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:elevation="4dp">
 
-        <!-- SearchView -->
         <SearchView
             android:id="@+id/searchView_search"
             android:layout_width="match_parent"
@@ -66,7 +64,7 @@
         android:id="@+id/btnClearHistory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Clear History"
+        android:text="Hapus Riwayat Pencarian"
         android:backgroundTint="?attr/backgroundColor"
         android:textColor="@android:color/white"
         android:padding="12dp"

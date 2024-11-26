@@ -17,7 +17,7 @@
         android:textColor="?attr/colorOnPrimary"
         android:fontFamily="@font/poppins_bold"
         android:paddingBottom="8dp"
-        android:text="Pertanyaan"/>
+        android:text="@string/help_detail_question"/>
 
     <TextView
         android:id="@+id/answer_text"
@@ -27,5 +27,5 @@
         android:textColor="?attr/colorOnPrimary"
         android:fontFamily="@font/poppins_regular"
         android:lineSpacingExtra="4dp"
-        android:text="Jawaban"/>
+        android:text="@string/help_detail_answer"/>
 </LinearLayout>
