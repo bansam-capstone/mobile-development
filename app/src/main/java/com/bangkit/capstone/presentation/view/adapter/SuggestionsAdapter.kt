@@ -38,8 +38,35 @@ class SuggestionsAdapter(
         private val locationSubtitle: TextView = binding.locationSubtitle
 
         fun bind(address: Address) {
-            locationTitle.text = address.thoroughfare ?: address.getAddressLine(0) ?: "Nama Jalan Tidak Tersedia"
-            locationSubtitle.text = address.countryName ?: address.locality ?: address.subLocality ?: "Tidak tersedia"
+            locationTitle.text = when {
+                address.featureName != null || address.thoroughfare != null -> {
+                    address.thoroughfare ?: address.featureName ?: "Nama jalan tidak tersedia"
+                }
+                address.subLocality != null -> {
+                    address.subLocality ?: "Nama kecamatan tidak tersedia"
+                }
+                address.locality != null -> {
+                    address.locality ?: "Nama kota tidak tersedia"
+                }
+                else -> {
+                    address.getAddressLine(0) ?: "Alamat tidak tersedia"
+                }
+            }
+
+            locationSubtitle.text = when {
+                address.locality != null -> {
+                    address.locality ?: "Kota tidak tersedia"
+                }
+                address.subLocality != null -> {
+                    address.subLocality ?: "Kecamatan tidak tersedia"
+                }
+                address.countryName != null -> {
+                    address.countryName ?: "Negara tidak tersedia"
+                }
+                else -> {
+                    "Tidak tersedia"
+                }
+            }
 
             binding.itemListSuggestion.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
