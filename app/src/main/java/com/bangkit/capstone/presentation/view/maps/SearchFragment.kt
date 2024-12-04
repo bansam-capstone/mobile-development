@@ -106,12 +106,31 @@ class SearchFragment : Fragment() {
 
         suggestionsAdapter = SuggestionsAdapter { address ->
             viewLifecycleOwner.lifecycleScope.launch {
-                val title = address.thoroughfare ?: address.getAddressLine(0)
-                val subtitle = address.countryName ?: address.locality ?: address.subLocality ?: "Tidak tersedia"
+                val title = when {
+                    address.featureName != null || address.thoroughfare != null -> {
+                        address.thoroughfare ?: address.featureName ?: "Nama jalan tidak tersedia"
+                    }
+                    address.subLocality != null -> {
+                        address.subLocality ?: "Nama kecamatan tidak tersedia"
+                    }
+                    address.locality != null -> {
+                        address.locality ?: "Nama kota tidak tersedia"
+                    }
+                    else -> {
+                        address.getAddressLine(0) ?: "Alamat tidak tersedia"
+                    }
+                }
 
-                if (title != null) {
+                val subtitle = when {
+                    address.locality != null -> address.locality ?: "Kota tidak tersedia"
+                    address.subLocality != null -> address.subLocality ?: "Kecamatan tidak tersedia"
+                    address.countryName != null -> address.countryName ?: "Negara tidak tersedia"
+                    else -> "Tidak tersedia"
+                }
+
+                if (title.isNotEmpty()) {
                     searchHistoryViewModel.insertSearchHistory(
-                        title = title.toString(),
+                        title = title,
                         subtitle = subtitle,
                         latitude = address.latitude,
                         longitude = address.longitude,
@@ -128,6 +147,7 @@ class SearchFragment : Fragment() {
                 }
             }
         }
+
 
         binding.rvSearch.apply {
             layoutManager = LinearLayoutManager(context)

@@ -9,8 +9,6 @@ import com.bangkit.capstone.data.remote.response.WeatherResponse
 import com.bangkit.capstone.data.remote.retrofit.ApiService
 import com.bangkit.capstone.domain.repository.WeatherRepository
 import java.time.ZoneId
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
@@ -45,32 +43,35 @@ class WeatherRepositoryImpl @Inject constructor(
         return try {
             val currentTimestamp = System.currentTimeMillis()
 
-            val cachedLocationWeather = locationWeatherDao.getLocationWeather(location)
+            val isUpToDate = locationWeatherDao.isLocationWeatherUpToDate(location, currentTimestamp - freshnessThreshold)
 
-            if (cachedLocationWeather == null || !cachedLocationWeather.timestamp?.let { isDataFresh(it, currentTimestamp) }!!) {
+
+            if (isUpToDate == 0) {
                 val locationResponse = apiService.getWeatherByLocation(location)
                 val locationWeatherEntity = locationResponse.toEntity().copy(timestamp = currentTimestamp)
                 locationWeatherDao.insertLocationWeather(locationWeatherEntity)
                 return locationResponse
+            } else {
+                val cachedLocationWeather = locationWeatherDao.getLocationWeather(location)
+                return cachedLocationWeather.toDomain()
             }
-
-            cachedLocationWeather.toDomain()
         } catch (e: Exception) {
             val cachedLocationWeather = locationWeatherDao.getLocationWeather(location)
-            cachedLocationWeather?.toDomain() ?: throw e
+            return cachedLocationWeather?.toDomain() ?: throw e
         }
     }
+
 
     override suspend fun getWeatherTommorowByLocation(location: String): LocationResponse {
         return apiService.getWeatherTommorowByLocation(location)
     }
 
     private fun convertGmtToLocal(timestampGmt: Long): Long {
-        val formatter = DateTimeFormatter.ISO_DATE_TIME
-        val gmtTime = ZonedDateTime.parse(timestampGmt.toString(), formatter)
-        val localTime = gmtTime.withZoneSameInstant(ZoneId.systemDefault())
+        val instant = java.time.Instant.ofEpochMilli(timestampGmt)
+        val localTime = instant.atZone(ZoneId.systemDefault())
         return localTime.toInstant().toEpochMilli()
     }
+
 
     private fun isDataFresh(timestampGmt: Long, currentTimestamp: Long): Boolean {
         val timestampLocal = convertGmtToLocal(timestampGmt)

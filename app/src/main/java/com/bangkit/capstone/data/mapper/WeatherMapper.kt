@@ -39,7 +39,7 @@ fun WeatherEntity.toDomain(): WeatherResponse {
     )
 }
 
-fun parseWeatherTimestampToLong(timestamp: String): Long? {
+fun parseWeatherTimestampToLong(timestamp: String): Long {
     val format = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.ENGLISH)
     val date = format.parse(timestamp)
     return date?.time ?: 0L
