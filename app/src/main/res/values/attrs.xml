@@ -7,4 +7,9 @@
     <attr name="colorOnSafe" format="color" />
     <attr name="colorSafeContainer" format="color" />
     <attr name="colorOnSafeContainer" format="color" />
+    <declare-styleable name="AppWidgetAttrs">
+        <attr name="appWidgetPadding" format="dimension" />
+        <attr name="appWidgetInnerRadius" format="dimension" />
+        <attr name="appWidgetRadius" format="dimension" />
+    </declare-styleable>
 </resources>

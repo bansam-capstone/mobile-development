@@ -9,7 +9,6 @@
     android:background="?attr/background"
     tools:context=".presentation.view.settings.SettingsActivity">
 
-    <!-- About Setting -->
     <LinearLayout
         android:id="@+id/ll_about"
         android:layout_width="match_parent"
@@ -41,11 +40,11 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_arrow_right" />
+            android:src="@drawable/ic_arrow_right"
+            android:contentDescription="@string/contentDesc" />
 
     </LinearLayout>
 
-    <!-- Terms of Use Setting -->
     <LinearLayout
         android:id="@+id/ll_terms"
         android:layout_width="match_parent"
@@ -77,10 +76,10 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_arrow_right" />
+            android:src="@drawable/ic_arrow_right"
+            android:contentDescription="@string/contentDesc" />
     </LinearLayout>
 
-    <!-- Privacy Policy Setting -->
     <LinearLayout
         android:id="@+id/ll_privacy"
         android:layout_width="match_parent"
@@ -112,7 +111,8 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_arrow_right" />
+            android:src="@drawable/ic_arrow_right"
+            android:contentDescription="@string/contentDesc"/>
     </LinearLayout>
 
 </LinearLayout>

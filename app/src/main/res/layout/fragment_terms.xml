@@ -3,16 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="?attr/background"
     tools:context=".presentation.view.termsandpolicy.TermsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         android:orientation="vertical">
 
-        <!-- Title Section -->
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
@@ -21,9 +20,8 @@
             android:fontFamily="@font/poppins_bold"
             android:layout_marginBottom="8dp"
             android:textColor="?attr/colorOnPrimary"
-            android:text="Ketentuan Penggunaan"/>
+            android:text="@string/terms_ketentuanpengguna"/>
 
-        <!-- Subtitle Section -->
         <TextView
             android:id="@+id/subtitleTextView"
             android:layout_width="wrap_content"
@@ -31,9 +29,8 @@
             android:textSize="12sp"
             android:textColor="?attr/colorOnPrimary"
             android:layout_marginBottom="16dp"
-            android:text="Tanggal"/>
+            android:text="@string/terms_tanggal"/>
 
-        <!-- Description -->
         <TextView
             android:id="@+id/descriptionTextView"
             android:layout_width="match_parent"
@@ -41,9 +38,8 @@
             android:textSize="14sp"
             android:textColor="?attr/colorOnPrimary"
             android:layout_marginBottom="16dp"
-            android:text="Deskripsi"/>
+            android:text="@string/terms_deskripsi"/>
 
-        <!-- Highlighted Information -->
         <TextView
             android:id="@+id/highlightedTextView"
             android:layout_width="match_parent"
@@ -51,11 +47,10 @@
             android:textSize="14sp"
             android:background="@drawable/bg_card_light_blue"
             android:padding="12dp"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnPrimary"
             android:layout_marginBottom="16dp"
-            android:text="Deskripsi"/>
+            android:text="@string/terms_deskripsi"/>
 
-        <!-- Content Section -->
         <TextView
             android:id="@+id/contentTextView"
             android:layout_width="match_parent"
@@ -63,6 +58,6 @@
             android:textSize="14sp"
             android:lineSpacingExtra="4dp"
             android:textColor="?attr/colorOnPrimary"
-            android:text="Deskripsi"/>
+            android:text="@string/terms_deskripsi"/>
     </LinearLayout>
 </ScrollView>

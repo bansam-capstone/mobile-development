@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ScrollView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.bangkit.capstone.R
@@ -45,6 +47,13 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        applyFadeOutEffect(R.id.scrollView, R.id.cardLocation, 500f)
+        applyFadeOutEffect(R.id.scrollView, R.id.cardWeather, 1500f)
+        applyFadeOutEffect(R.id.scrollView, R.id.cardWeatherInfo, 1500f)
+        applyFadeOutEffect(R.id.scrollView, R.id.cardFloodPrediction, 1500f)
+        applyFadeInEffect(R.id.scrollView, R.id.cardMaps, 1500f)
+        applyFadeInEffect(R.id.scrollView, R.id.cardTipsMitigation, 500f)
+
         setupUI()
 
         updateBackgroundBasedOnTheme()
@@ -71,6 +80,26 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.mapView.getMapAsync(this)
         binding.mapView.onCreate(savedInstanceState)
 
+    }
+
+    private fun applyFadeOutEffect(scrollViewId: Int, targetViewId: Int, maxFadeDistance: Float) {
+        val scrollView = findViewById<ScrollView>(scrollViewId)
+        val targetView = findViewById<View>(targetViewId)
+        scrollView.viewTreeObserver.addOnScrollChangedListener {
+            val scrollY = scrollView.scrollY
+            val alphaValue = 1 - (scrollY / maxFadeDistance)
+            targetView.alpha = alphaValue.coerceIn(0f, 1f)
+        }
+    }
+
+    private fun applyFadeInEffect(scrollViewId: Int, targetViewId: Int, maxFadeDistance: Float) {
+        val scrollView = findViewById<ScrollView>(scrollViewId)
+        val targetView = findViewById<View>(targetViewId)
+        scrollView.viewTreeObserver.addOnScrollChangedListener {
+            val scrollY = scrollView.scrollY
+            val alphaValue = (scrollY / maxFadeDistance).coerceIn(0f, 1f)
+            targetView.alpha = alphaValue
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -205,7 +234,6 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
                                         }
                                     }
                                 }
-
                                 val categories = calculateFloodCategories(weatherList)
                                 updateFloodPredictionTotals(categories)
                             }
@@ -245,41 +273,55 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
         when (weatherIcon) {
             "clear sky" -> {
                 if (isDaytime) {
-                    binding.ivWeatherIcon.setImageResource(R.drawable.ic_weather_day_clearsky)
+                    binding.animationWeatherIcon.setAnimation(R.raw.weather_day_clearsky)
+                    binding.animationWeatherIcon.playAnimation()
                 } else {
-                    binding.ivWeatherIcon.setImageResource(R.drawable.ic_weather_night_clearsky)
+                    binding.animationWeatherIcon.setAnimation(R.raw.weather_night_clearsky)
+                    binding.animationWeatherIcon.playAnimation()
                 }
             }
             "few clouds", "scattered clouds" -> {
                 if (isDaytime) {
-                    binding.ivWeatherIcon.setImageResource(R.drawable.ic_weather_day_fewclouds)
+                    binding.animationWeatherIcon.setAnimation(R.raw.weather_day_clouds)
+                    binding.animationWeatherIcon.playAnimation()
                 } else {
-                    binding.ivWeatherIcon.setImageResource(R.drawable.ic_weather_night_fewclouds)
+                    binding.animationWeatherIcon.setAnimation(R.raw.weather_night_cloud)
+                    binding.animationWeatherIcon.playAnimation()
                 }
             }
             "broken clouds", "overcast clouds" -> {
                 if (isDaytime) {
-                    binding.ivWeatherIcon.setImageResource(R.drawable.ic_weather_day_brokenclouds)
+                    binding.animationWeatherIcon.setAnimation(R.raw.weather_day_clouds)
+                    binding.animationWeatherIcon.playAnimation()
                 } else {
-                    binding.ivWeatherIcon.setImageResource(R.drawable.ic_weather_night_brokenclouds)
+                    binding.animationWeatherIcon.setAnimation(R.raw.weather_night_cloud)
+                    binding.animationWeatherIcon.playAnimation()
                 }
             }
             "shower rain", "rain", "light rain", "moderate rain", "very heavy rain", "extreme rain" -> {
                 if (isDaytime) {
-                    binding.ivWeatherIcon.setImageResource(R.drawable.ic_weather_daynight_rain)
+                    binding.animationWeatherIcon.setAnimation(R.raw.weather_day_rain)
+                    binding.animationWeatherIcon.playAnimation()
+                    binding.animationView.visibility = View.VISIBLE
                 } else {
-                    binding.ivWeatherIcon.setImageResource(R.drawable.ic_weather_daynight_rain)
+                    binding.animationWeatherIcon.setAnimation(R.raw.weather_night_rain)
+                    binding.animationWeatherIcon.playAnimation()
+                    binding.animationView.visibility = View.VISIBLE
                 }
             }
             "thunderstorm", "thunderstorm with light rain", "thunderstorm with heavy rain" -> {
                 if (isDaytime) {
-                    binding.ivWeatherIcon.setImageResource(R.drawable.ic_weather_daynight_tstorms)
+                    binding.animationWeatherIcon.setAnimation(R.raw.weather_day_tstorms)
+                    binding.animationWeatherIcon.playAnimation()
+                    binding.animationView.visibility = View.VISIBLE
                 } else {
-                    binding.ivWeatherIcon.setImageResource(R.drawable.ic_weather_daynight_tstorms)
+                    binding.animationWeatherIcon.setAnimation(R.raw.weather_night_tstorms)
+                    binding.animationWeatherIcon.playAnimation()
+                    binding.animationView.visibility = View.VISIBLE
                 }
             }
             else -> {
-                binding.ivWeatherIcon.setImageResource(R.drawable.ic_weather_day_fewclouds)
+                binding.animationWeatherIcon.setAnimation(R.raw.weather_day_clouds)
             }
         }
     }
@@ -299,13 +341,9 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
         val currentNightMode = resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
         when (currentNightMode) {
             android.content.res.Configuration.UI_MODE_NIGHT_YES -> {
-//                binding.cardWeatherInfo.setBackgroundResource(R.drawable.bg_card_dark)
-//                binding.cardFloodPrediction.setBackgroundResource(R.drawable.bg_card_dark)
                 binding.mainContainer.setBackgroundResource(R.drawable.bg_gradient_dark)
             }
             android.content.res.Configuration.UI_MODE_NIGHT_NO -> {
-//                binding.cardWeatherInfo.setBackgroundResource(R.drawable.bg_card_light)
-//                binding.cardFloodPrediction.setBackgroundResource(R.drawable.bg_card_light)
                 binding.mainContainer.setBackgroundResource(R.drawable.bg_gradient_light)
             }
         }

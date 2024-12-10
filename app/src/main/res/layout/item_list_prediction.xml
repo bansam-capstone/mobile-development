@@ -1,6 +1,5 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/llPrediction"
@@ -33,7 +32,7 @@
                 android:id="@+id/tvAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nama Jalan"
+                android:text="@string/nama_jalan"
                 android:textSize="16sp"
                 android:textColor="?attr/colorOnPrimary"
                 android:ellipsize="end"
@@ -52,7 +51,7 @@
                     android:id="@+id/tvStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Aman"
+                    android:text="@string/home_title_safe"
                     android:textSize="14sp"
                     android:textColor="@color/success_900" />
 
@@ -62,8 +61,7 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_arrow_right"
-            app:tint="@color/black" />
+            android:src="@drawable/ic_arrow_right"/>
 
 
     </LinearLayout>

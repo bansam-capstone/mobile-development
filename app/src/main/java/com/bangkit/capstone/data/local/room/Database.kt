@@ -10,6 +10,5 @@ import com.bangkit.capstone.data.local.entity.WeatherEntity
 abstract class Database : RoomDatabase() {
     abstract fun searchHistoryDao(): SearchHistoryDao
     abstract fun weatherDao(): WeatherDao
-
     abstract fun locationWeatherDao(): LocationWeatherDao
 }

@@ -1,25 +1,15 @@
 package com.bangkit.capstone.presentation.view.settings
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.work.*
 import com.bangkit.capstone.R
-import com.bangkit.capstone.common.Resource
-import com.bangkit.capstone.data.remote.response.LocationResponse
 import com.bangkit.capstone.databinding.ActivitySettingsBinding
-import com.bangkit.capstone.domain.model.FloodCategories
 import com.bangkit.capstone.presentation.view.about.AboutActivity
 import com.bangkit.capstone.presentation.view.termsandpolicy.TermsPolicyActivity
-import com.bangkit.capstone.presentation.viewmodel.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class SettingsActivity : AppCompatActivity() {

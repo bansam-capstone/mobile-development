@@ -16,6 +16,17 @@ class AboutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        updateLogo()
+    }
+
+    private fun updateLogo(){
+        val currentNightMode = resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
+        if (currentNightMode == android.content.res.Configuration.UI_MODE_NIGHT_NO) {
+            binding.ivLogo.setImageResource(R.drawable.ic_logo_bansam)
+        } else {
+            binding.ivLogo.setImageResource(R.drawable.ic_logo_bansam_dark)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

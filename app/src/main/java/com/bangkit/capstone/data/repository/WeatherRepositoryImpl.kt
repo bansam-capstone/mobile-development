@@ -57,7 +57,7 @@ class WeatherRepositoryImpl @Inject constructor(
             }
         } catch (e: Exception) {
             val cachedLocationWeather = locationWeatherDao.getLocationWeather(location)
-            return cachedLocationWeather?.toDomain() ?: throw e
+            return cachedLocationWeather.toDomain()
         }
     }
 

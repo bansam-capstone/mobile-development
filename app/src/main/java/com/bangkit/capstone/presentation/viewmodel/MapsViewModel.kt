@@ -5,11 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bangkit.capstone.common.Resource
 import com.bangkit.capstone.data.remote.response.LocationResponse
+import com.bangkit.capstone.domain.model.RiskLevel
+import com.bangkit.capstone.domain.repository.RiskLevelRepository
 import com.bangkit.capstone.domain.use_case.get_weatherbylocation.GetWeatherByLocationsUseCase
 import com.bangkit.capstone.domain.use_case.get_weathertommorow.GetWeatherTomorrowByLocationUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -31,6 +34,7 @@ class MapsViewModel @Inject constructor(
         val cachedWeather = weatherTodayCache[identifier]
         if (cachedWeather != null) {
             _weatherTodayData.value = Resource.Success(listOf(cachedWeather))
+            updateRiskLevel(identifier, cachedWeather.riskLevel)
             return
         }
 
@@ -66,6 +70,7 @@ class MapsViewModel @Inject constructor(
         val cachedWeather = weatherTommorowCache[identifier]
         if (cachedWeather != null) {
             _weatherTommorowdData.value = Resource.Success(listOf(cachedWeather))
+            updateRiskLevel(identifier, cachedWeather.riskLevel)
             return
         }
 
@@ -94,6 +99,23 @@ class MapsViewModel @Inject constructor(
                         }
                     }
                 }
+        }
+    }
+
+    private fun updateRiskLevel(identifier: String, riskLevel: String?) {
+        riskLevel?.let {
+            val formattedRiskLevel = it.trim().replaceFirstChar {
+                if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+            }
+            val risk = when (formattedRiskLevel) {
+                "Aman" -> RiskLevel.AMAN
+                "Waspada" -> RiskLevel.WASPADA
+                "Bahaya" -> RiskLevel.BAHAYA
+                else -> RiskLevel.AMAN
+            }
+            RiskLevelRepository.setRiskLevel(identifier, risk)
+        } ?: run {
+            RiskLevelRepository.setRiskLevel(identifier, RiskLevel.AMAN)
         }
     }
 

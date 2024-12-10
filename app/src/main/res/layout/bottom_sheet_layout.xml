@@ -16,7 +16,6 @@
         android:layout_marginBottom="16dp"
         android:layout_marginTop="4dp" />
 
-    <!-- Title: Location (Jl. Pangeran Antasari) -->
     <TextView
         android:id="@+id/tvLocation"
         android:layout_width="wrap_content"
@@ -25,7 +24,6 @@
         android:textSize="20sp"
         android:fontFamily="@font/poppins_bold"
         android:textColor="?attr/colorOnPrimary" />
-
 
     <TextView
         android:id="@+id/tvLocationDescription"
@@ -63,7 +61,6 @@
             android:layout_gravity="center"
             android:visibility="gone"/>
 
-        <!-- Flood Status Section -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +73,8 @@
                 android:id="@+id/statusIcon"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
-                android:src="@drawable/ic_prediction_safe" />
+                android:src="@drawable/ic_prediction_safe"
+                android:contentDescription="@string/contentDesc" />
 
             <TextView
                 android:id="@+id/tvFloodStatus"
@@ -89,16 +87,15 @@
                 android:layout_marginTop="8dp" />
         </LinearLayout>
 
-        <!-- Additional Information Section (Wind Speed, Humidity, Pressure) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
             android:background="@drawable/bg_card_sheet"
-            android:padding="15dp">
+            android:padding="15dp"
+            android:baselineAligned="false">
 
-            <!-- Wind Speed -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -110,7 +107,8 @@
                     android:id="@+id/windIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_wind_power_24" />
+                    android:src="@drawable/ic_wind_power_24"
+                    android:contentDescription="@string/contentDesc" />
 
                 <TextView
                     android:id="@+id/tvWindSpeed"
@@ -132,7 +130,6 @@
 
             </LinearLayout>
 
-            <!-- Humidity -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -144,7 +141,8 @@
                     android:id="@+id/humidityIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_water_drop_24" />
+                    android:src="@drawable/ic_water_drop_24"
+                    android:contentDescription="@string/contentDesc" />
 
                 <TextView
                     android:id="@+id/tvHumidity"
@@ -166,7 +164,6 @@
 
             </LinearLayout>
 
-            <!-- Pressure -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -178,7 +175,8 @@
                     android:id="@+id/pressureIcvon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_water_24" />
+                    android:src="@drawable/ic_water_24"
+                    android:contentDescription="@string/contentDesc" />
 
                 <TextView
                     android:id="@+id/tvPressure"
@@ -203,7 +201,6 @@
 
     </LinearLayout>
 
-    <!-- CCTV Button -->
     <Button
         android:id="@+id/btnViewCCTV"
         android:layout_width="match_parent"

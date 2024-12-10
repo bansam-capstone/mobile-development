@@ -1,6 +1,7 @@
 package com.bangkit.capstone.di
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.room.Room
 import com.bangkit.capstone.data.local.room.SearchHistoryDao
 import com.bangkit.capstone.data.local.room.Database
@@ -23,6 +24,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences =
+        context.getSharedPreferences("weather_prefs", Context.MODE_PRIVATE)
 
     // Provide Room Database
     @Provides
