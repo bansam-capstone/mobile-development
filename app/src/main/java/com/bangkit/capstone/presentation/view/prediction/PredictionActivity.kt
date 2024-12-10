@@ -96,12 +96,9 @@ class PredictionActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         adapter = PredictionAdapter(locationAddressMap) { prediction ->
-            Toast.makeText(this, "Item diklik: ${prediction.location}", Toast.LENGTH_SHORT).show()
-            Log.d("PredictionActivity", "Item diklik: ${prediction.location}")
 
             val selectedLocation = locations.find { it.identifier == prediction.location }
             if (selectedLocation != null) {
-                Log.d("PredictionActivity", "Latitude: ${selectedLocation.latLng.latitude}, Longitude: ${selectedLocation.latLng.longitude}")
 
                 val intent = Intent(this, MapsActivity::class.java).apply {
                     val bundle = Bundle()
@@ -116,7 +113,6 @@ class PredictionActivity : AppCompatActivity() {
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Lokasi tidak ditemukan", Toast.LENGTH_SHORT).show()
-                Log.d("PredictionActivity", "Lokasi tidak ditemukan untuk identifier: ${prediction.location}")
             }
         }
 

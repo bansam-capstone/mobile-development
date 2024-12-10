@@ -70,6 +70,7 @@ dependencies {
     // Google Maps
     implementation("com.google.android.gms:play-services-maps:19.0.0")
     implementation("com.google.maps.android:android-maps-utils:2.3.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
@@ -100,8 +101,8 @@ dependencies {
     // Shimmer
     implementation("com.facebook.shimmer:shimmer:0.5.0")
 
-    // Work Manager
-    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    // Animation
+    implementation("com.airbnb.android:lottie:3.4.0")
 
 }
 

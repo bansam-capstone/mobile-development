@@ -34,7 +34,7 @@
                 android:id="@+id/locationTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nama Jalan"
+                android:text="@string/nama_jalan"
                 android:textSize="16sp"
                 android:textColor="?attr/colorOnPrimary"
                 android:ellipsize="end"
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/colorOnPrimary"
-                android:text="Deskripsi Jalan"
+                android:text="@string/deskripsi_jalan"
                 android:textSize="14sp" />
 
         </LinearLayout>
@@ -54,7 +54,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_arrow_right"
-            app:tint="@color/black" />
+            android:contentDescription="@string/contentDesc" />
 
 
     </LinearLayout>

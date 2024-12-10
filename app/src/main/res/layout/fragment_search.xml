@@ -64,7 +64,7 @@
         android:id="@+id/btnClearHistory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hapus Riwayat Pencarian"
+        android:text="@string/search_btnclear"
         android:backgroundTint="?attr/backgroundColor"
         android:textColor="@android:color/white"
         android:padding="12dp"

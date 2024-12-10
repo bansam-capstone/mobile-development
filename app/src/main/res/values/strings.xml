@@ -1,11 +1,9 @@
 <resources>
     <string name="app_name">BanSam</string>
     <string name="settings_title">Pengaturan</string>
-    <string name="search_hint">Cari Lokasi</string>
     <string name="help_title">Bantuan</string>
 
     <!-- Mitigation -->
-    <string name="mitigasi_banjir_title">Mitigasi Banjir</string>
 
     <!-- Subjudul -->
     <string name="subjudul_sebelum_banjir">Sebelum Banjir Terjadi</string>
@@ -54,7 +52,6 @@
     <string name="features_list">• Peta Interaktif yang menyajikan data area banjir secara real-time.\n• Peringatan dini yang berupa notifikasi prediksi banjir untuk tindakan pencegahan banjir.</string>
 
     <!-- Help -->
-    <string name="faq_title">FAQ</string>
     <string-array name="faq_questions">
         <item>Apakah aplikasi BANSAM hanya bisa digunakan di Kota Samarinda?</item>
         <item>Apakah informasi yang disajikan real-time?</item>
@@ -134,8 +131,6 @@
     <string name="home_description_mitigation">Dapatkan tips praktis untuk menghadapi banjir, mulai dari persiapan, tindakan saat banjir, hingga langkah pemulihan.</string>
 
     <!--settings-->
-    <string name="settings_notification_icon">Notification Icon</string>
-    <string name="settings_title_notification">Notifikasi</string>
     <string name="settings_about_icon">About Icon</string>
     <string name="settings_title_about">Tentang</string>
     <string name="settings_terms_icon">Terms Icon</string>
@@ -152,6 +147,22 @@
     <string name="bsheet_subtitle_address">Kec. Samarinda Ulu, Kota Samarinda, Kalimantan Timur</string>
     <string name="bsheet_prediction_title">Status Banjir: Aman</string>
     <string name="bsheet_btn_cctv">Lihat CCTV</string>
-
+    <string name="app_widget_description">This is an app widget description</string>
+    <string name="tidak_ada_ancaman_banjir">Tidak ada ancaman banjir</string>
+    <string name="image">Image</string>
+    <string name="loading">----</string>
+    <string name="nama_jalan">Nama Jalan</string>
+    <string name="deskripsi_jalan">Deskripsi Jalan</string>
+    <string name="ketentuan_penggunaan">Ketentuan Penggunaan</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="contentDesc">content</string>
+    <string name="policy_ketentuanpengguna">Ketentuan Penggunaan</string>
+    <string name="policy_tanggal">Tanggal</string>
+    <string name="policy_deskripsi">Deskripsi</string>
+    <string name="search_btnclear">Hapus Riwayat Pencarian</string>
+    <string name="terms_ketentuanpengguna">Ketentuan Penggunaan</string>
+    <string name="terms_tanggal">Tanggal</string>
+    <string name="terms_deskripsi">Deskripsi</string>
 
 </resources>
