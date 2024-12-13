@@ -1,10 +1,11 @@
 <h1 align="center">BanSam</h1>
 
 <p align="center">
-  Android Apps for BanSam, built with XML and ViewModel based on MVVM architecture.
-</p>
-<p align="center">
   <img src="https://github.com/user-attachments/assets/e8a9a92a-1b6c-412e-9474-107998e7f652" alt="App Logo" width="200">
+</p>
+
+<p align="center">
+  Android Apps for BanSam, built with XML and ViewModel based on MVVM architecture.
 </p>
 
 ## Tech Stack & Open-Source Libraries
@@ -39,7 +40,10 @@ BanSam built using MVVM Architecture
 
 - **Installation:**
   - Download the .apk file
-    Click on the image to download the BanSam APK.
+    <a href="https://drive.google.com/file/d/1KdAr69hBYPMAk5ZJ55T09nrei2DFiUBH/view?usp=sharing">
+      <img src="https://github.com/user-attachments/assets/2c58c18e-cf9f-4916-9841-43672e95358c" alt="Download APK" width="20">
+    </a>
+      Click on the image to download the BanSam APK.
   - Install the app and enjoy the flood prediction.
 
 # BanSam App Features
@@ -50,4 +54,8 @@ BanSam built using MVVM Architecture
 | 2.  | Geofencing for Real-Time Alerts       | Detects when users enter or exit flood-prone areas, and sends notifications regarding the flood status of the location.  |
 | 3.  | Flood Widget for Quick Updates           | Provides a widget on the main screen to check current flood conditions without opening the app, with real-time information on the user's location or selected area.  |
 
-## BanSam Flood prediction Preview(Only Location X)
+## BanSam Flood Prediction Preview (Only Location Ir.H.Juanda)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2c619571-567f-47a2-b89b-4916e7b66caf" alt="BanSam Location Predict">
+</p>
+BanSam is developed to provide real-time flood predictions with high accuracy in flood-prone areas in Samarinda City. This app also aims to help people take early preventive actions.
