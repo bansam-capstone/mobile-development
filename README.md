@@ -1,7 +1,7 @@
 <h1 align="center">BanSam</h1>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/e8a9a92a-1b6c-412e-9474-107998e7f652" alt="App Logo" width="200">
+  <img src="https://github.com/user-attachments/assets/ade067e8-d03a-438f-a18f-45c97f72fb24" alt="App Preview">
 </p>
 
 <p align="center">
@@ -19,7 +19,7 @@
 | Network Requests         | Retrofit                    |
 | JSON Parsing             | GSON                        |
 | Asynchronous Programming | Kotlin Coroutines           |
-| UI Development           | Jetpack Compose             |
+| UI Development           | XML                         |
 | Database Storage         | Room                        |
 
 ## App Architecture
