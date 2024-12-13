@@ -3,6 +3,9 @@
 <p align="center">
   Android Apps for BanSam, built with XML and ViewModel based on MVVM architecture.
 </p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e8a9a92a-1b6c-412e-9474-107998e7f652" alt="App Logo" width="200">
+</p>
 
 ## Tech Stack & Open-Source Libraries
 
@@ -21,9 +24,11 @@
 ## App Architecture
 
 BanSam built using MVVM Architecture
-
 <p align="center">
+  <img src="https://github.com/user-attachments/assets/c7c3f28c-9822-4242-b90b-1006e53e591b" alt="App Architecture" width="400">
 </p>
+
+
 
 ## Getting Started
 
